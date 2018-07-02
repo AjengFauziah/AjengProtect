@@ -1,0 +1,2 @@
+
+[<module 'time' (built-in)>] local variable 'contact' referenced before assignment

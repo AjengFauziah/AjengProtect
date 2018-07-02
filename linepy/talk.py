@@ -111,6 +111,15 @@ class Talk(object):
         return self.sendMessage(to, text, contentMetadata)
 
     @loggedIn
+    def sendFooter(self, to, text, agentIcon, agentName, agentLink):
+        contentMetadata = {
+            'AGENT_ICON': agentIcon,
+            'AGENT_NAME': agentName,
+            'AGENT_LINK': agentLink
+        }
+        return self.sendMessage(to, text, contentMetadata, 0)
+
+    @loggedIn
     def sendSticker(self, to, packageId, stickerId):
         contentMetadata = {
             'STKVER': '100',

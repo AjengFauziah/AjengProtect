@@ -12,39 +12,41 @@ from googletrans import Translator
 botStart = time.time()
 
 #nadya = LINE()
-nadya = LINE("Eu79FmctoWlstlRWaV26.VY6sOdr9IniV6PQ5YrYBHG.qrsaBgl5p6Ugy/R8pfQW2HxtYSbNNOXGybg0eWamQ1g=")
+nadya = LINE("EuzXJTJWxGEFFkbG3U61.k5fyNkKZNtM1Had6A6IHGq.o+IUGMbZdRqQyKEwee+AEW6bj6zrrk6noa7UoPK+ePE=")
+#nadya = LINE("EuPTSZJ49JkIbXAQJX86.VY6sOdr9IniV6PQ5YrYBHG.tIO5eYBwNAETQJRfy1WwtWOZHTU3F5bv542aP6+YacQ=")
 #nadya = LINE("Email","Password")
 nadya.log("Auth Token : " + str(nadya.authToken))
 channelToken = nadya.getChannelResult()
 nadya.log("Channel Token : " + str(channelToken))
 
 #ki = LINE()
-ki = LINE("Eu7s0p1ayDbm7WnieTt2.N3OxxCQpRV1sR2UM3hkrKG.y/4S59eKJ6QsjWr4UMQO2HNXcYvhFwFPJvL4f19CRmQ=")
+ki = LINE("EuUqFTRZNki2I0vopfA5.XbhUGpVqXPFdlc8smhKx5q.uk+lNIAgE7lDxtnsfND2eA6CvfkPOHfklZ22pHG7/IY=")
 #ki = LINE("Email","Password")
 ki.log("Auth Token : " + str(ki.authToken))
 channelToken = ki.getChannelResult()
 ki.log("Channel Token : " + str(channelToken))
 
 #ki2 = LINE()
-ki2 = LINE("EueFmnpUdxdKcdUrWfp0.ocHod1lJjuXSUThjwpxQqa.sYPlscGUJKgQbk0I/blpOQzJXd7fZSBD563fomRFOj4=")
+ki2 = LINE("EunpzYfKJc7upgdLRg80.ocHod1lJjuXSUThjwpxQqa.EJA5iKD0SjUd2iGw2cqJcMPS11P1qdi0Eg8xViVEl6s=")
 #ki2 = LINE("Email","Password")
 ki2.log("Auth Token : " + str(ki2.authToken))
 channelToken = ki2.getChannelResult()
 ki2.log("Channel Token : " + str(channelToken))
 
 #ki3 = LINE()
-ki3 = LINE("EubPrM1hNWGakHPx1Pe9.cdJcoh2Ng2LUJ+g++C7i6q.8zSWryJOnfswIT6gRTDxYbXewwhndQ5/xVZgoSSWuAY=")
+ki3 = LINE("EuFeSi3B5FaFGDqQdRu9.cdJcoh2Ng2LUJ+g++C7i6q.+Vt4oCsh45XVp3QKX+cMEcVABk7e/RxPM6C7sLzc+8U=")
 #ki3 = LINE("Email","Password")
 ki3.log("Auth Token : " + str(ki3.authToken))
 channelToken = ki3.getChannelResult()
 ki3.log("Channel Token : " + str(channelToken))
 
 #ki4 = LINE()
-ki4 = LINE("Eu95lc2uxt21wjnHdgI6.Xdw13d7L4vYHIcbTQFIh1G.o0xohBQM/QODgf7T5mK/p8tDe6xBbicnZZDDhrVV7n0=")
+ki4 = LINE("Eu2Ig5eFeqGsZU0XFvm6.Xdw13d7L4vYHIcbTQFIh1G.JD5pZUyXsyX8gw1Vxqhr2WwGmQ0HAVWlotpOQA6LCAI=")
 #ki4 = LINE("Email","Password")
 ki4.log("Auth Token : " + str(ki4.authToken))
 channelToken = ki4.getChannelResult()
 ki4.log("Channel Token : " + str(channelToken))
+
 
 
 KAC = [nadya,ki,ki2,ki3,ki4]
@@ -123,16 +125,6 @@ def restartBot():
     python = sys.executable
     os.execl(python, python, *sys.argv)
     
-def sendMessageWithCustomFooter(self, to, text, customName, customLink, customIcon):
-    msg = Message()
-    msg.to = to
-    msg.text = text
-    msg.contentMetadata = {
-        'AGENT_ICON': customIcon, 'AGENT_NAME': customName,
-        'AGENT_LINK': customLink
-        }
-    return self.talk.sendMessage(0,msg)
-
 def logError(text):
     nadya.log("[ ERROR ] " + str(text))
     time_ = datetime.now()
@@ -457,6 +449,12 @@ def lineBot(op):
                     nadya.acceptGroupInvitation(op.param1)
                 nadya.sendMention(op.param1, "Halo, Terimakasih Telah Mengundang Saya :3")
                 
+        if op.type == 15:
+            print ("[ 15 ] NOTIFIED LEAVE INTO GROUP")
+            dan = nadya.getContact(op.param2)
+            tgb = nadya.getGroup(op.param1)
+            nadya.sendMessage(op.param1, "selamat tinggal {} dari group {} :(".format(str(dan.displayName),str(tgb.name)))
+
         if op.type == 17:
             print ("[ 17 ]  NOTIFIED ACCEPT GROUP INVITATION")
             group = nadya.getGroup(op.param1)
@@ -528,8 +526,8 @@ def lineBot(op):
                         
                        
 #-------------------------------------------------------------------------------
-        if op.type == 26:
-            print ("[ 26 ] SEND MESSAGE COMMAND")
+        if op.type == 25 or op.type == 26:
+            print ("[ 25,26 ] SEND MESSAGE COMMAND")
             msg = op.message
             text = msg.text
             msg_id = msg.id
@@ -548,20 +546,36 @@ def lineBot(op):
 #==============================================================================#
                 if text.lower() == 'help':
                     helpMessage = helpmessage()
-                    nadya.sendMessage(to, str(helpMessage))
-                    nadya.sendContact(to, "u902a7dc14a3d49a5e0757c1e06c1291b")
+                    contact = nadya.getContact(sender)
+                    icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
+                    name = contact.displayName
+                    link = "line.me/ti/p/~alx-404"
+                    nadya.sendFooter(to, helpMessage, icon, name, link)
                 elif text.lower() == 'texttospeech':
                     helpTextToSpeech = helptexttospeech()
-                    nadya.sendMessage(to, str(helpTextToSpeech))
+                    contact = nadya.getContact(sender)
+                    icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
+                    name = contact.displayName
+                    link = "line.me/ti/p/~alx-404"
+                    nadya.sendFooter(to, helpTextToSpeech, icon, name, link)
                 elif text.lower() == 'translate':
                     helpTranslate = helptranslate()
-                    nadya.sendMessage(to, str(helpTranslate))
+                    contact = nadya.getContact(sender)
+                    icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
+                    name = contact.displayName
+                    link = "line.me/ti/p/~alx-404"
+                    nadya.sendFooter(to, helpTranslate, icon, name, link)
 #==============================================================================#
                 elif text.lower() == 'speed':
                     start = time.time()
                     nadya.sendMessage(to, "Please Wait...")
                     elapsed_time = time.time() - start
-                    nadya.sendMessage(to,"• {}".format(str(elapsed_time)))
+                    contact = nadya.getContact(sender)
+                    icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
+                    name = contact.displayName
+                    link = "line.me/ti/p/~alx-404"
+                    text = "• {}".format(elapsed_time)
+                    nadya.sendFooter(to, text, icon, name, link)
                 elif text.lower() == 'restart':
                   if msg._from in Owner:    
                     nadya.sendMessage(to, "Please Wait...")
@@ -916,7 +930,7 @@ def lineBot(op):
                     ki3.sendMessage(msg.to,responsename4)
                     ki4.sendMessage(msg.to,responsename5)
                     
-                elif msg.text.lower() == 'absen':
+                elif msg.text.lower() == 'mybot':
                     if msg._from in Owner:
                         nadya.sendContact(to, nadyaMID)
                         ki.sendContact(to, kiMID)
@@ -931,7 +945,7 @@ def lineBot(op):
                     ki3.leaveGroup(msg.to)
                     ki4.leaveGroup(msg.to)
 
-                elif text.lower() in ["axe bye"]:
+                elif text.lower() in ["bye"]:
                     nadya.leaveGroup(msg.to)
                 elif text.lower() in ["blood bye"]:
                   if msg._from in Owner:
@@ -1271,7 +1285,7 @@ def lineBot(op):
                 elif text.lower() == 'groupname':
                     gid = nadya.getGroup(to)
                     nadya.sendMessage(to, "[Nama Group : ]\n" + gid.name)
-                elif text.lower() == 'groupticket':
+                elif text.lower() == 'qr':
                     if msg.toType == 2:
                         group = nadya.getGroup(to)
                         if group.preventedJoinByTicket == False:
@@ -1279,7 +1293,7 @@ def lineBot(op):
                             nadya.sendMessage(to, "[ Group Ticket ]\nhttps://line.me/R/ti/g/{}".format(str(ticket)))
                         else:
                             nadya.sendMessage(to, "Grup qr tidak terbuka silahkan buka terlebih dahulu dengan perintah {}openqr".format(str(settings["keyCommand"])))
-                elif text.lower() == 'groupticket on':
+                elif text.lower() == 'qr on':
                     if msg.toType == 2:
                         group = nadya.getGroup(to)
                         if group.preventedJoinByTicket == False:
@@ -1288,7 +1302,7 @@ def lineBot(op):
                             group.preventedJoinByTicket = False
                             nadya.updateGroup(group)
                             nadya.sendMessage(to, "Berhasil membuka grup qr")
-                elif text.lower() == 'groupticket off':
+                elif text.lower() == 'qr off':
                     if msg.toType == 2:
                         group = nadya.getGroup(to)
                         if group.preventedJoinByTicket == True:
