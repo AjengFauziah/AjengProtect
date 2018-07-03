@@ -549,21 +549,21 @@ def lineBot(op):
                     contact = nadya.getContact(sender)
                     icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
                     name = contact.displayName
-                    link = "line.me/ti/p/~alx-404"
+                    link = "line://ti/p/~alx-404"
                     nadya.sendFooter(to, helpMessage, icon, name, link)
                 elif text.lower() == 'texttospeech':
                     helpTextToSpeech = helptexttospeech()
                     contact = nadya.getContact(sender)
                     icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
                     name = contact.displayName
-                    link = "line.me/ti/p/~alx-404"
+                    link = "line://ti/p/~alx-404"
                     nadya.sendFooter(to, helpTextToSpeech, icon, name, link)
                 elif text.lower() == 'translate':
                     helpTranslate = helptranslate()
                     contact = nadya.getContact(sender)
                     icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
                     name = contact.displayName
-                    link = "line.me/ti/p/~alx-404"
+                    link = "line://ti/p/~alx-404"
                     nadya.sendFooter(to, helpTranslate, icon, name, link)
 #==============================================================================#
                 elif text.lower() == 'speed':
@@ -573,7 +573,7 @@ def lineBot(op):
                     contact = nadya.getContact(sender)
                     icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
                     name = contact.displayName
-                    link = "line.me/ti/p/~alx-404"
+                    link = "line://ti/p/~alx-404"
                     text = "• {}".format(elapsed_time)
                     nadya.sendFooter(to, text, icon, name, link)
                 elif text.lower() == 'restart':
@@ -979,25 +979,26 @@ def lineBot(op):
                     nadya.updateGroup(G)
                 
                 elif text.lower() == 'me':
-                    sendMessageWithMention(to, nadyaMID)
+                    sendMessageWithMention(to, [sender])
                     nadya.sendContact(to, nadyaMID)
                 elif text.lower() == 'mymid':
-                    nadya.sendMessage(msg.to,"[MID]\n" +  nadyaMID)
+                    contact = nadya.getContact(sender)
+                    nadya.sendMessageWithMention(to, "{}".format(contact.mid), [sender])
                 elif text.lower() == 'myname':
-                    me = nadya.getContact(nadyaMID)
-                    nadya.sendMessage(msg.to,"[DisplayName]\n" + me.displayName)
+                    me = nadya.getContact(sender)
+                    nadya.sendMessageWithMention(to, "{}".format(contact.displayName), [sender])
                 elif text.lower() == 'mybio':
-                    me = nadya.getContact(nadyaMID)
-                    nadya.sendMessage(msg.to,"[StatusMessage]\n" + me.statusMessage)
+                    me = nadya.getContact(sender)
+                    nadya.sendMessageWithMention(to, "{}".format(contact.statusMessage, [sender])
                 elif text.lower() == 'mypicture':
-                    me = nadya.getContact(nadyaMID)
-                    nadya.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + me.pictureStatus)
+                    me = nadya.getContact(sender)
+                    nadya.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus))
                 elif text.lower() == 'myvideoprofile':
-                    me = nadya.getContact(nadyaMID)
-                    nadya.sendVideoWithURL(msg.to,"http://dl.profile.line-cdn.net/" + me.pictureStatus + "/vp")
+                    me = nadya.getContact(sender)
+                    nadya.sendVideoWithURL(msg.to,"http://dl.profile.line-cdn.net/{}/vp".format(contact.pictureStatus))
                 elif text.lower() == 'mycover':
-                    me = nadya.getContact(nadyaMID)
-                    cover = nadya.getProfileCoverURL(nadyaMID)    
+                    me = nadya.getContact(sender)
+                    cover = nadya.getProfileCoverURL(sender)    
                     nadya.sendImageWithURL(msg.to, cover)
                 elif msg.text.lower().startswith("stealcontact "):
                     if 'MENTION' in msg.contentMetadata.keys()!= None:
@@ -3055,21 +3056,24 @@ def lineBot(op):
                 nadya.sendMessage(to, "Goblok cek sendiri di tanggal jangan manja")
                 
 
-            elif msg.text.lower().startswith("gbroadcast "):   
+            elif msg.text.lower().startswith("friendbroadcast: "):
+              if msg._from in Owner:
                 sep = text.split(" ")
                 txt = text.replace(sep[0] + " ","")
-                groups = nadya.groups
+                contacts = nadya.getAllContactIds()
+                for contact in contacts:
+                        nadya.sendMessage(contact, "[ Broadcast ]\n{}".format(str(txt)))
+                nadya.sendMessage(to, "Berhasil broadcast ke {} teman".format(str(len(contacts))))
+
+            elif msg.text.lower().startswith("groupbroadcast: "):
+              if msg._from in Owner:
+                sep = text.split(" ")
+                txt = text.replace(sep[0] + " ","")
+                groups = nadya.getGroupIdsJoined()
                 for group in groups:
-                    nadya.sendMessage(group, "[ Broadcast ]\n{}".format(str(txt)))
-                    nadya.sendMessage(to, "Berhasil broadcast ke {} group".format(str(len(groups))))
-                    
-            elif msg.text.lower().startswith("fbroadcast "):   
-                sep = text.split(" ")
-                txt = text.replace(sep[0] + " ","")
-                friends = nadya.friends
-                for friend in friends:
-                    nadya.sendMessage(friend, "[ Broadcast ]\n{}".format(str(txt)))
-                    nadya.sendMessage(to, "Berhasil broadcast ke {} teman".format(str(len(friends))))
+                        nadya.sendMessage(group, "[ Broadcast ]\n{}".format(str(txt)))
+                nadya.sendMessage(to, "Berhasil broadcast ke {} group".format(str(len(groups))))
+
             elif msg.text.lower().startswith("allbroadcast "):   
                 sep = text.split(" ")
                 txt = text.replace(sep[0] + " ","")
