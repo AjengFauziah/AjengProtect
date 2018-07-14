@@ -468,8 +468,6 @@ def lineBot(op):
             dan = nadya.getContact(op.param2)
             tgb = nadya.getGroup(op.param1)
             nadya.sendMessage(op.param1, "Hai {}, Selamat datang di grup {}\nSemoga betah yak".format(str(dan.displayName),str(tgb.name)))
-            nadya.sendContact(op.param1, op.param2)
-            nadya.sendImageWithURL(op.param1, "http://dl.profile.line-cdn.net{}".format(dan.picturePath))
 
         if op.type == 19:
             print ("[ 19 ] NOTIFIED KICKOUT FROM GROUP")
@@ -544,14 +542,14 @@ def lineBot(op):
                 if text is None:
                     return
 #==============================================================================#
-                if text.lower() == 'help':
-                    helpMessage = helpmessage()
-                    own = "u2b91589ca9339d39b58400fa6ba8a181"
-                    contact = nadya.getContact(own)
-                    icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
-                    name = contact.displayName
-                    link = "line://ti/p/~alx-404"
-                    nadya.sendFooter(to, helpMessage, icon, name, link)
+#                if text.lower() == 'help':
+ #                   helpMessage = helpmessage()
+  #                  own = "u2b91589ca9339d39b58400fa6ba8a181"
+   #                 contact = nadya.getContact(own)
+    #                icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
+     #               name = contact.displayName
+      #              link = "line://ti/p/~alx-404"
+       #             nadya.sendFooter(to, helpMessage, icon, name, link)
                 elif text.lower() == 'texttospeech':
                     helpTextToSpeech = helptexttospeech()
                     own = "u2b91589ca9339d39b58400fa6ba8a181"
@@ -1102,6 +1100,11 @@ def lineBot(op):
                 elif msg.text.lower().startswith("apakah"):
                     sep = text.split(" ")
                     psn = ['Iya','Tidak','Iya','Tidak','Tidak','Iya']
+                    jwb = random.choice(psn)
+                    nadya.sendMessage(msg.to,jwb)
+                elif msg.text.lower().startswith("@alx"):
+                    sep = text.split(" ")
+                    psn = ['jangan tag alx qmac >:(','pc aja alx nya','apa sih tag tag alx akmj >:(','dia lagi tidur qmac >:(']
                     jwb = random.choice(psn)
                     nadya.sendMessage(msg.to,jwb)
                 elif msg.text.lower().startswith("bot1changename:"):
