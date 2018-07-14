@@ -11,37 +11,37 @@ from googletrans import Translator
 #==============================================================================#
 botStart = time.time()
 
-nadya = LINE()
-#nadya = LINE("")
+#nadya = LINE()
+nadya = LINE("EuzbuNrsDsZP9RYOQsye.bctZMNSsw9apUrh51+bENG./DeN+RCRagUyHKwIjUDOqFBaS8uBnd5noclEOC7i9ZE=")
 #nadya = LINE("EuPTSZJ49JkIbXAQJX86.VY6sOdr9IniV6PQ5YrYBHG.tIO5eYBwNAETQJRfy1WwtWOZHTU3F5bv542aP6+YacQ=")
 #nadya = LINE("Email","Password")
 nadya.log("Auth Token : " + str(nadya.authToken))
 channelToken = nadya.getChannelResult()
 nadya.log("Channel Token : " + str(channelToken))
 
-ki = LINE()
-#ki = LINE("")
+#ki = LINE()
+ki = LINE("EuwTX8t48ihi5aMWYkb5.XbhUGpVqXPFdlc8smhKx5q.wpFvwVvne56J4vN8gM9rxlzGgEyH1r0WAeqB8Nlz5GA=")
 #ki = LINE("Email","Password")
 ki.log("Auth Token : " + str(ki.authToken))
 channelToken = ki.getChannelResult()
 ki.log("Channel Token : " + str(channelToken))
 
-ki2 = LINE()
-#ki2 = LINE("")
+#ki2 = LINE()
+ki2 = LINE("EuFCtzYVtrV3Csp8B6X0.ocHod1lJjuXSUThjwpxQqa.mpdZe4Y/eCM2I8HSo/8jPWKX/1zMNKg0jLve0pEz0io=")
 #ki2 = LINE("Email","Password")
 ki2.log("Auth Token : " + str(ki2.authToken))
 channelToken = ki2.getChannelResult()
 ki2.log("Channel Token : " + str(channelToken))
 
-ki3 = LINE()
-#ki3 = LINE("")
+#ki3 = LINE()
+ki3 = LINE("EuUz97vWLRKW3HaPyvX9.cdJcoh2Ng2LUJ+g++C7i6q.Xu4E4xDJkMBHEgnVab0U1kpx5VcYarkc8No38xU08d8=")
 #ki3 = LINE("Email","Password")
 ki3.log("Auth Token : " + str(ki3.authToken))
 channelToken = ki3.getChannelResult()
 ki3.log("Channel Token : " + str(channelToken))
 
-ki4 = LINE()
-#ki4 = LINE("")
+#ki4 = LINE()
+ki4 = LINE("Euvy2kEegkvrMbQflWx6.Xdw13d7L4vYHIcbTQFIh1G.bnMh2t7h7D7f1uVvgUH96ABoHTWgJ2QcrzYarRe4tnc=")
 #ki4 = LINE("Email","Password")
 ki4.log("Auth Token : " + str(ki4.authToken))
 channelToken = ki4.getChannelResult()
@@ -984,7 +984,7 @@ def lineBot(op):
                     nadya.updateGroup(G)
                 
                 elif text.lower() == 'me':
-                    nadya.sendContact(to, nadyaMID)
+                    nadya.sendContact(to, sender)
                 elif text.lower() == 'mymid':
                     contact = nadya.getContact(sender)
                     nadya.sendMessageWithMention(to, "{}".format(contact.mid), [sender])
@@ -993,7 +993,7 @@ def lineBot(op):
                     nadya.sendMessageWithMention(to, "{}".format(contact.displayName), [sender])
                 elif text.lower() == 'mybio':
                     contact = nadya.getContact(sender)
-                    nadya.sendMessageWithMention(to, "{}".format(contact.statusMessage, [sender])
+                    nadya.sendMessageWithMention(to, "{}".format(contact.statusMessage), [sender])
                 elif text.lower() == 'mypicture':
                     contact = nadya.getContact(sender)
                     nadya.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus))
