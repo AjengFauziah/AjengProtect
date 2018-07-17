@@ -11,8 +11,8 @@ from googletrans import Translator
 #==============================================================================#
 botStart = time.time()
 
-nadya = LINE()
-#nadya = LINE("EuzbuNrsDsZP9RYOQsye.bctZMNSsw9apUrh51+bENG./DeN+RCRagUyHKwIjUDOqFBaS8uBnd5noclEOC7i9ZE=")
+#nadya = LINE()
+nadya = LINE("EuG96GA7ciU9ECQljHsc.s2kq8Aax4k7yc5nFByAYVa.OWtpxnDX6J0GAS7VLZNtnFThJGBCpwzGOwmnNAcfRqk=")
 #nadya = LINE("EuPTSZJ49JkIbXAQJX86.VY6sOdr9IniV6PQ5YrYBHG.tIO5eYBwNAETQJRfy1WwtWOZHTU3F5bv542aP6+YacQ=")
 #nadya = LINE("Email","Password")
 nadya.log("Auth Token : " + str(nadya.authToken))
@@ -529,7 +529,7 @@ def lineBot(op):
         if op.type == 25 or op.type == 26:
             print ("[ 25,26 ] SEND MESSAGE COMMAND")
             msg = op.message
-            text = msg.text
+            text = str(msg.text)
             msg_id = msg.id
             receiver = msg.to
             sender = msg._from
@@ -1294,7 +1294,7 @@ def lineBot(op):
                 		nadya.sendMessage(to, "Tidak ada wordban saat ini.")
 
                 elif text.lower().startswith("addwordban: "):
-                	word = text.replace("addwordban: ","")
+                	word = text.replace(" ")
                 	if word not in wordban:
                 		wordban.append(word)
                 		nadya.sendMessage(to, "Sukses menambahkan {} ke dalam wordban.".format(str(word)))
@@ -1302,7 +1302,7 @@ def lineBot(op):
                 		nadya.sendMessage(to, "{} sudah ada didalam wordban.".format(str(word)))
 
                 elif text.lower().startswith("delwordban: "):
-                	word = text.replace("delwordban: ","")
+                	word = text.replace(" ")
                 	if word in wordban:
                 		wordban.remove(word)
                 		nadya.sendMessage(to, "Sukses menghapus {} dari wordban.".format(str(word)))
