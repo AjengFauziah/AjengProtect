@@ -11,8 +11,8 @@ from googletrans import Translator
 #==============================================================================#
 botStart = time.time()
 
-#nadya = LINE()
-nadya = LINE("EuzbuNrsDsZP9RYOQsye.bctZMNSsw9apUrh51+bENG./DeN+RCRagUyHKwIjUDOqFBaS8uBnd5noclEOC7i9ZE=")
+nadya = LINE()
+#nadya = LINE("EuzbuNrsDsZP9RYOQsye.bctZMNSsw9apUrh51+bENG./DeN+RCRagUyHKwIjUDOqFBaS8uBnd5noclEOC7i9ZE=")
 #nadya = LINE("EuPTSZJ49JkIbXAQJX86.VY6sOdr9IniV6PQ5YrYBHG.tIO5eYBwNAETQJRfy1WwtWOZHTU3F5bv542aP6+YacQ=")
 #nadya = LINE("Email","Password")
 nadya.log("Auth Token : " + str(nadya.authToken))
@@ -113,6 +113,8 @@ settingsOpen = codecs.open("temp.json","r","utf-8")
 
 read = json.load(readOpen)
 settings = json.load(settingsOpen)
+
+wordban = []
 
 #if settings["restartPoint"] != None:
 #    nadya.sendMessage(settings["restartPoint"], "Bot kembali aktif")
@@ -1279,6 +1281,39 @@ def lineBot(op):
                             settings["mimic"]["status"] = False
                             nadya.sendMessage(msg.to,"Reply Message off")
 #==============================================================================#
+                elif text.lower() == "wordbanlist":
+                	if wordban not in [[]]:
+                		no = 1
+                		wordbans = "[ Word Ban ]\n"
+                		for word in wordban:
+                			wordbans+="\n{}. {}".format(str(no),str(word))
+                			no+=1
+                		wordbans+="\n\n[ Finish ]"
+                		nadya.sendMessage(to, str(wordbans))
+                	if wordban == []:
+                		nadya.sendMessage(to, "Tidak ada wordban saat ini.")
+
+                elif text.lower().startswith("addwordban: "):
+                	word = text.replace("addwordban: ","")
+                	if word not in wordban:
+                		wordban.append(word)
+                		nadya.sendMessage(to, "Sukses menambahkan {} ke dalam wordban.".format(str(word)))
+                	else:
+                		nadya.sendMessage(to, "{} sudah ada didalam wordban.".format(str(word)))
+
+                elif text.lower().startswith("delwordban: "):
+                	word = text.replace("delwordban: ","")
+                	if word in wordban:
+                		wordban.remove(word)
+                		nadya.sendMessage(to, "Sukses menghapus {} dari wordban.".format(str(word)))
+                	else:
+                		nadya.sendMessage(to, "{} tidak ada didalam wordban.".format(str(word)))                
+
+                elif text.lower() in wordban:
+                	nadya.sendMessage(to, "Maaf, {} termasuk dalam wordban.".format(str(text)))
+                	nadya.kickoutFromGroup(to, [sender])
+
+#============================================================================
                 elif text.lower() == 'groupcreator':
                     group = nadya.getGroup(to)
                     GS = group.creator.mid
