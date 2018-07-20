@@ -142,104 +142,73 @@ def sendMessageWithMention(to, mid):
         logError(error)
         
 def helpmessage():
-    helpMessage = "╔═══════════════" + "\n" + \
-                  "╠══✪〘 ALX BOT PROTECT 〙✪══" + "\n" + \
-                  "║" + "\n" + \
-                  "╠══✪〘 Help Message 〙✪══" + "\n" + \
-                  "║" + "\n" + \
-                  "╠✪〘 Help 〙✪════════" + "\n" + \
-                  "╠➥ Help" + "\n" + \
-                  "╠➥ Translate" + "\n" + \
-                  "╠➥ Texttospeech" + "\n" + \
-                  "║" + "\n" + \
-                  "╠✪〘 Protect 〙✪═══════" + "\n" + \
-                  "╠➥ Protect 「On/Off」" + "\n" + \
-                  "╠➥ QrProtect 「On/Off」" + "\n" + \
-                  "╠➥ InviteProtect 「On/Off」" + "\n" + \
-                  "╠➥ CancelProtect 「On/Off」" + "\n" + \
-                  "╠➥ SetPro 「On/Off」" + "\n" + \
-                  "║" + "\n" + \
-                  "╠✪〘 Status 〙✪════════" + "\n" + \
-                  "╠➥ Restart" + "\n" + \
-                  "╠➥ Runtime" + "\n" + \
-                  "╠➥ Speed" + "\n" + \
-                  "╠➥ Status" + "\n" + \
-                  "╠➥ About" + "\n" + \
-                  "║" + "\n" + \
-                  "╠✪〘 Settings 〙✪═══════" + "\n" + \
-                  "╠➥ AutoAdd「On/Off」" + "\n" + \
-                  "╠➥ AutoJoin「On/Off」" + "\n" + \
-                  "╠➥ AutoLeave「On/Off」" + "\n" + \
-                  "╠➥ AutoRead「On/Off」" + "\n" + \
-                  "╠➥ CheckSticker「On/Off」" + "\n" + \
-                  "╠➥ DetectMention「On/Off」" + "\n" + \
-                  "║" + "\n" + \
-                  "╠✪〘 Self 〙✪═════════" + "\n" + \
-                  "╠➥ Me" + "\n" + \
-                  "╠➥ MyMid" + "\n" + \
-                  "╠➥ MyName" + "\n" + \
-                  "╠➥ MyBio" + "\n" + \
-                  "╠➥ MyPicture" + "\n" + \
-                  "╠➥ MyVideoProfile" + "\n" + \
-                  "╠➥ MyCover" + "\n" + \
-                  "╠➥ StealContact「Mention」" + "\n" + \
-                  "╠➥ StealMid「Mention」" + "\n" + \
-                  "╠➥ StealName「Mention」" + "\n" + \
-                  "╠➥ StealBio「Mention」" + "\n" + \
-                  "╠➥ StealPicture「Mention」" + "\n" + \
-                  "╠➥ StealVideoProfile「Mention」" + "\n" + \
-                  "╠➥ StealCover「Mention」" + "\n" + \
-                  "╠➥ CloneProfile「Mention」" + "\n" + \
-                  "╠➥ RestoreProfile" + "\n" + \
-                  "║" + "\n" + \
-                  "╠✪〘 Group 〙✪════════" + "\n" + \
-                  "╠➥ GroupCreator" + "\n" + \
-                  "╠➥ GroupId" + "\n" + \
-                  "╠➥ GroupName" + "\n" + \
-                  "╠➥ GroupPicture" + "\n" + \
-                  "╠➥ GroupTicket" + "\n" + \
-                  "╠➥ GroupTicket「On/Off」" + "\n" + \
-                  "╠➥ GroupList" + "\n" + \
-                  "╠➥ GroupMemberList" + "\n" + \
-                  "╠➥ GroupInfo" + "\n" + \
-                  "╠➥ Kill「Mention」" + "\n" + \
-                  "╠➥ KickAllMember"+ "\n" + \
-                  "║" + "\n" + \
-                  "╠✪〘 Special 〙✪═══════" + "\n" + \
-                  "╠➥ Mimic「On/Off」" + "\n" + \
-                  "╠➥ MimicList" + "\n" + \
-                  "╠➥ MimicAdd「Mention」" + "\n" + \
-                  "╠➥ MimicDel「Mention」" + "\n" + \
-                  "╠➥ Mention" + "\n" + \
-                  "║" + "\n" + \
-                  "╠✪〘 Media 〙✪════════" + "\n" + \
-                  "╠➥ Kalender" + "\n" + \
-                  "╠➥ CheckDate「Date」" + "\n" + \
-                  "╠➥ InstagramInfo「UserName」" + "\n" + \
-                  "╠➥ InstagramPost「UserName」" + "\n" + \
-                  "╠➥ SearchYoutube「Search」" + "\n" + \
-                  "╠➥ SearchMusic「Search」" + "\n" + \
-                  "╠➥ SearchLyric「Search」" + "\n" + \
-                  "╠➥ SearchImage「Search」" + "\n" + \
-                  "╠➥ ScreenshootWebsite「LinkUrl」" + "\n" + \
-                  "║" + "\n" + \
-                  "╠✪〘 Bot 〙✪═════════" + "\n" + \
-                  "╠➥ AdminAdd" + "\n" + \
-                  "╠➥ AdminDel" + "\n" + \
-                  "╠➥ AdminList" + "\n" + \
-                  "╠➥ OwnerAdd" + "\n" + \
-                  "╠➥ OwnerDel" + "\n" + \
-                  "╠➥ OwnerList" + "\n" + \
-                  "╠➥ BanContact" + "\n" + \
-                  "╠➥ UnbanContact" + "\n" + \
-                  "╠➥ BanList" + "\n" + \
-                  "╠➥ ClearBan" + "\n" + \
-                  "╠➥ Respon" + "\n" + \
-                  "╠➥ Absen" + "\n" + \
-                  "╠➥ JoinAll" + "\n" + \
-                  "╠➥ ByeAll" + "\n" + \
-                  "║" + "\n" + \
-                  "╚═〘 Credits By: ©Alx  〙"
+    helpMessage = "╭─────────────────────────╼" + "\n" + \
+                  "├─⊶ Help ⊷────────────╼" + "\n" + \
+                  "├≺ Translate" + "\n" + \
+                  "├≺ Texttospeech" + "\n" + \
+                  "├─⊶ Status ⊷──────────╼" + "\n" + \
+                  "├≺ Restart" + "\n" + \
+                  "├≺ Runtime" + "\n" + \
+                  "├≺ Speed" + "\n" + \
+                  "├≺ About" + "\n" + \
+                  "├─⊶ Self ⊷────────────╼" + "\n" + \
+                  "├≺ Me" + "\n" + \
+                  "├≺ MyMid" + "\n" + \
+                  "├≺ MyName" + "\n" + \
+                  "├≺ MyBio" + "\n" + \
+                  "├≺ MyPicture" + "\n" + \
+                  "├≺ MyVideoProfile" + "\n" + \
+                  "├≺ MyCover" + "\n" + \
+                  "├≺ StealContact" + "\n" + \
+                  "├≺ StealMid" + "\n" + \
+                  "├≺ StealName" + "\n" + \
+                  "├≺ StealBio" + "\n" + \
+                  "├≺ StealPicture" + "\n" + \
+                  "├≺ StealVideoProfile" + "\n" + \
+                  "├≺ StealCover" + "\n" + \
+                  "├─⊶ Group ⊷───────────╼" + "\n" + \
+                  "├≺ GroupCreator" + "\n" + \
+                  "├≺ GroupId" + "\n" + \
+                  "├≺ GroupName" + "\n" + \
+                  "├≺ GroupPicture" + "\n" + \
+                  "├≺ GroupTicket" + "\n" + \
+                  "├≺ GroupTicket」" + "\n" + \
+                  "├≺ GroupList" + "\n" + \
+                  "├≺ GroupMemberList" + "\n" + \
+                  "├≺ GroupInfo" + "\n" + \
+                  "├≺ Cium" + "\n" + \
+                  "├─⊶ Special ⊷─────────╼" + "\n" + \
+                  "├≺ Mimic「On/Off」" + "\n" + \
+                  "├≺ MimicList" + "\n" + \
+                  "├≺ MimicAdd" + "\n" + \
+                  "├≺ MimicDel" + "\n" + \
+                  "├≺ Mention" + "\n" + \
+                  "├─⊶ Media ⊷───────────╼" + "\n" + \
+                  "├≺ Kalender" + "\n" + \
+                  "├≺ CheckDate" + "\n" + \
+                  "├≺ InstagramInfo" + "\n" + \
+                  "├≺ InstagramPost" + "\n" + \
+                  "├≺ SearchYoutube" + "\n" + \
+                  "├≺ SearchMusic" + "\n" + \
+                  "├≺ SearchLyric" + "\n" + \
+                  "├≺ SearchImage" + "\n" + \
+                  "├─⊶ Bot ⊷─────────────╼" + "\n" + \
+                  "├≺ AdminAdd" + "\n" + \
+                  "├≺ AdminDel" + "\n" + \
+                  "├≺ AdminList" + "\n" + \
+                  "├≺ OwnerAdd" + "\n" + \
+                  "├≺ OwnerDel" + "\n" + \
+                  "├≺ OwnerList" + "\n" + \
+                  "├≺ BanContact" + "\n" + \
+                  "├≺ UnbanContact" + "\n" + \
+                  "├≺ BanList" + "\n" + \
+                  "├≺ ClearBan" + "\n" + \
+                  "├≺ Takiz" + "\n" + \
+                  "├≺ Mybot" + "\n" + \
+                  "├≺ JoinAll" + "\n" + \
+                  "├≺ ByeAll" + "\n" + \
+                  "├─⊶ Credits By:©Alx ⊷─╼" + "\n" + \
+                  "╰─────────────────────────╼"
     return helpMessage
     
 def helptexttospeech():
@@ -443,7 +412,7 @@ def lineBot(op):
         if op.type == 5:
             print ("[ 5 ] NOTIFIED ADD CONTACT")
             if settings["autoAdd"] == True:
-                nadya.sendMessage(op.param1, "Halo {} terimakasih telah menambahkan saya sebagai teman :D".format(str(nadya.getContact(op.param1).displayName)))
+                nadya.sendMessage(op.param1, "Halo {} terimakasih telah menambahkan saya sebagai teman :D\nSaya hanya sebuah bot, tidak bisa mengirim pesan secara manual:D\nSilahkan add owner saya jika minat sewa bot ini :D\nline.me/ti/p/~alx-404".format(str(nadya.getContact(op.param1).displayName)))
         if op.type == 13:
             print ("[ 13 ] NOTIFIED INVITE INTO GROUP")
             if nadyaMID in op.param3:
@@ -454,8 +423,7 @@ def lineBot(op):
         if op.type == 15:
             print ("[ 15 ] NOTIFIED LEAVE INTO GROUP")
             dan = nadya.getContact(op.param2)
-            tgb = nadya.getGroup(op.param1)
-            nadya.sendMessage(op.param1, "selamat tinggal {} dari group {} :(".format(str(dan.displayName),str(tgb.name)))
+            nadya.sendMessage(op.param1, "selamat tinggal {} semoga tenang:(".format(str(dan.displayName)))
 
         if op.type == 17:
             print ("[ 17 ]  NOTIFIED ACCEPT GROUP INVITATION")
@@ -544,14 +512,14 @@ def lineBot(op):
                 if text is None:
                     return
 #==============================================================================#
-#                if text.lower() == 'help':
- #                   helpMessage = helpmessage()
-  #                  own = "u2b91589ca9339d39b58400fa6ba8a181"
-   #                 contact = nadya.getContact(own)
-    #                icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
-     #               name = contact.displayName
-      #              link = "line://ti/p/~alx-404"
-       #             nadya.sendFooter(to, helpMessage, icon, name, link)
+                if text.lower() == 'help':
+                    helpMessage = helpmessage()
+                    own = "u2b91589ca9339d39b58400fa6ba8a181"
+                    contact = nadya.getContact(own)
+                    icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
+                    name = contact.displayName
+                    link = "line://ti/p/~alx-404"
+                    nadya.sendFooter(to, helpMessage, icon, name, link)
                 elif text.lower() == 'texttospeech':
                     helpTextToSpeech = helptexttospeech()
                     own = "u2b91589ca9339d39b58400fa6ba8a181"
@@ -594,7 +562,7 @@ def lineBot(op):
                 elif text.lower() == 'about':
                     try:
                         arr = []
-                        owner = "u902a7dc14a3d49a5e0757c1e06c1291b"
+                        owner = "u2b91589ca9339d39b58400fa6ba8a181"
                         creator = nadya.getContact(owner)
                         contact = nadya.getContact(nadyaMID)
                         grouplist = nadya.getGroupIdsJoined()
@@ -928,12 +896,13 @@ def lineBot(op):
                     nadya.sendMessage(to, "Berhasil menonaktifkan Auto Join Link")                    
 #==============================================================================#
                 elif text.lower() == "respon":
-                    nadya.sendMessage(msg.to,responsename)
-                    ki.sendMessage(msg.to,responsename2)
-                    ki2.sendMessage(msg.to,responsename3)
-                    ki3.sendMessage(msg.to,responsename4)
-                    ki4.sendMessage(msg.to,responsename5)
-                    nadya.sendMessage(msg.to, "TAKIS~Z")
+                    nadya.sendMessage(msg.to, "▁▂▄▅▆▇█ Takis~Z █▇▆▅▄▂▁")
+                    ki.sendMessage(msg.to, "▁▂▄▅▆▇█ Takis~Z █▇▆▅▄▂▁")
+                    ki2.sendMessage(msg.to, "▁▂▄▅▆▇█ Takis~Z █▇▆▅▄▂▁")
+                    ki3.sendMessage(msg.to, "▁▂▄▅▆▇█ Takis~Z █▇▆▅▄▂▁")
+                    ki4.sendMessage(msg.to, "▁▂▄▅▆▇█ Takis~Z █▇▆▅▄▂▁")
+                    nadya.sendMessage(msg.to, "ᴡᴇ ᴀʀᴇ ᴀ ʟᴀʀɢᴇ ғᴀᴍɪʟʏ ᴀ ɢʀᴏᴜᴘ ᴇxᴛʀᴇᴍᴇ◢◤")
+                    nadya.sendMessage(msg.to, "ᴡᴇ ᴀʀᴇ ᴛᴀᴋɪs~ᴢ")
                     
                 elif msg.text.lower() == 'mybot':
                     if msg._from in Owner:
@@ -950,18 +919,18 @@ def lineBot(op):
                     ki3.leaveGroup(msg.to)
                     ki4.leaveGroup(msg.to)
 
-                elif text.lower() in ["bye"]:
+                elif text.lower() in ["@bye"]:
                     nadya.leaveGroup(msg.to)
-                elif text.lower() in ["blood bye"]:
+                elif text.lower() in ["2bye"]:
                   if msg._from in Owner:
                     ki.leaveGroup(msg.to)
-                elif text.lower() in ["cyrus bye"]:
+                elif text.lower() in ["3bye"]:
                   if msg._from in Owner:
                     ki2.leaveGroup(msg.to)
-                elif text.lower() in ["dez bye"]:
+                elif text.lower() in ["4bye"]:
                   if msg._from in Owner:
                     ki3.leaveGroup(msg.to)
-                elif text.lower() in ["emerald bye"]:
+                elif text.lower() in ["5bye"]:
                   if msg._from in Owner:
                     ki4.leaveGroup(msg.to)
                
@@ -1223,8 +1192,8 @@ def lineBot(op):
                                     num = int(cond[1])
                                     if num <= len(gruplist):
                                        get = gruplist[num -1]
-                                       nadya.sendMessage(get,"[Auto Respon]\nBot di paksa keluar oleh Owner")
-                                       nadya.sendContact(get,"u902a7dc14a3d49a5e0757c1e06c1291b")
+                                       nadya.sendMessage(get,"[Auto Chat]\nBot di paksa keluar oleh Owner")
+                                       nadya.sendContact(get,"u2b91589ca9339d39b58400fa6ba8a181")
                                        nadya.leaveGroup(get)
                                        ki.leaveGroup(get)
                                        ki2.leaveGroup(get)
@@ -1432,7 +1401,7 @@ def lineBot(op):
                             msgs+="\n══════════List Blacklist═════════\n\nTotal Blacklist :  %i" % len(settings["blacklist"])
                             nadya.sendMessage(msg.to, msgs)
 #=======================================================================================
-                elif msg.text.lower().startswith("kill "):
+                elif msg.text.lower().startswith("cium "):
                     if msg._from in Owner:
                        targets = []
                        key = eval(msg.contentMetadata["MENTION"])
