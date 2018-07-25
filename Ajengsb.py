@@ -343,8 +343,8 @@ def lineBot(op):
             print ("[ 24 ] NOTIFIED LEAVE ROOM")
             if settings["autoLeave"] == True:
                 nadya.leaveRoom(op.param1)
-        if op.type == 25:
-            print ("[ 25 ] SEND MESSAGE")
+        if op.type == 26:
+            print ("[ 26 ] SEND MESSAGE")
             msg = op.message
             text = msg.text
             msg_id = msg.id

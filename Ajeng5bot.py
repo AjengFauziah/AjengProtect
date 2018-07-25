@@ -420,10 +420,10 @@ def lineBot(op):
                     nadya.acceptGroupInvitation(op.param1)
                 nadya.sendMention(op.param1, "Halo, Terimakasih Telah Mengundang Saya :3")
                 
-        if op.type == 15:
-            print ("[ 15 ] NOTIFIED LEAVE INTO GROUP")
-            dan = nadya.getContact(op.param2)
-            nadya.sendMessage(op.param1, "selamat tinggal {} semoga tenang:(".format(str(dan.displayName)))
+#        if op.type == 15:
+ #           print ("[ 15 ] NOTIFIED LEAVE INTO GROUP")
+  #          dan = nadya.getContact(op.param2)
+   #         nadya.sendMessage(op.param1, "selamat tinggal {} semoga tenang:(".format(str(dan.displayName)))
 
         if op.type == 17:
             print ("[ 17 ]  NOTIFIED ACCEPT GROUP INVITATION")
@@ -433,11 +433,11 @@ def lineBot(op):
             arg += "\n   User Join : {}".format(str(contact.displayName))
             print (arg)
         
-        if op.type == 17:
-            print ("[ 17 ] NOTIFIED WELCOME MESSAGE")
-            dan = nadya.getContact(op.param2)
-            tgb = nadya.getGroup(op.param1)
-            nadya.sendMessage(op.param1, "Hai {}, Selamat datang di grup {}\nSemoga betah yak".format(str(dan.displayName),str(tgb.name)))
+   #     if op.type == 17:
+  #          print ("[ 17 ] NOTIFIED WELCOME MESSAGE")
+ #           dan = nadya.getContact(op.param2)
+#            tgb = nadya.getGroup(op.param1)
+#            nadya.sendMessage(op.param1, "Hai {}, Selamat datang di grup {}\nSemoga betah yak".format(str(dan.displayName),str(tgb.name)))
 
         if op.type == 19:
             print ("[ 19 ] NOTIFIED KICKOUT FROM GROUP")
@@ -539,7 +539,6 @@ def lineBot(op):
 #==============================================================================#
                 elif text.lower() == 'speed':
                     start = time.time()
-                    nadya.sendMessage(to, "Please Wait...")
                     elapsed_time = time.time() - start
                     own = "u2b91589ca9339d39b58400fa6ba8a181"
                     contact = nadya.getContact(own)
@@ -895,14 +894,22 @@ def lineBot(op):
                     settings["autoJoinTicket"] = False
                     nadya.sendMessage(to, "Berhasil menonaktifkan Auto Join Link")                    
 #==============================================================================#
-                elif text.lower() == "respon":
-                    nadya.sendMessage(msg.to, "▁▂▄▅▆▇█ Takis~Z █▇▆▅▄▂▁")
-                    ki.sendMessage(msg.to, "▁▂▄▅▆▇█ Takis~Z █▇▆▅▄▂▁")
-                    ki2.sendMessage(msg.to, "▁▂▄▅▆▇█ Takis~Z █▇▆▅▄▂▁")
-                    ki3.sendMessage(msg.to, "▁▂▄▅▆▇█ Takis~Z █▇▆▅▄▂▁")
-                    ki4.sendMessage(msg.to, "▁▂▄▅▆▇█ Takis~Z █▇▆▅▄▂▁")
+                elif text.lower() == "takiz":
+                    nadya.sendMessage(msg.to, "20%\n██▓▓▓▓▓▓▓▓")
+                    ki.sendMessage(msg.to, "40%\n████▓▓▓▓▓▓")
+                    ki2.sendMessage(msg.to, "60%\n██████▓▓▓▓")
+                    ki3.sendMessage(msg.to, "80%\n████████▓▓")
+                    ki4.sendMessage(msg.to, "100%\n██████████")
                     nadya.sendMessage(msg.to, "ᴡᴇ ᴀʀᴇ ᴀ ʟᴀʀɢᴇ ғᴀᴍɪʟʏ ᴀ ɢʀᴏᴜᴘ ᴇxᴛʀᴇᴍᴇ◢◤")
                     nadya.sendMessage(msg.to, "ᴡᴇ ᴀʀᴇ ᴛᴀᴋɪs~ᴢ")
+                elif text.lower() == "alo":
+                    nadya.sendMessage(msg.to, "Alo juga")
+                elif text.lower() == "kam":
+                    nadya.sendMessage(msg.to, "pret")
+                elif text.lower() == "hai":
+                    nadya.sendMessage(msg.to, "hai juga")
+                elif text.lower() == "kamm":
+                    nadya.sendMessage(msg.to, "Prett")
                     
                 elif msg.text.lower() == 'mybot':
                     if msg._from in Owner:
@@ -1073,11 +1080,11 @@ def lineBot(op):
                     psn = ['Iya','Tidak','Iya','Tidak','Tidak','Iya']
                     jwb = random.choice(psn)
                     nadya.sendMessage(msg.to,jwb)
-                elif msg.text.lower().startswith("@alx"):
-                    sep = text.split(" ")
-                    psn = ['jangan tag alx qmac >:(','pc aja alx nya','apa sih tag tag alx akmj >:(','dia lagi tidur qmac >:(']
-                    jwb = random.choice(psn)
-                    nadya.sendMessage(msg.to,jwb)
+#                elif msg.text.lower().startswith("@alx"):
+ #                   sep = text.split(" ")
+  #                  psn = ['jangan tag alx qmac >:(','pc aja alx nya','apa sih tag tag alx akmj >:(','dia lagi tidur qmac >:(']
+   #                 jwb = random.choice(psn)
+    #                nadya.sendMessage(msg.to,jwb)
                 elif msg.text.lower().startswith("bot1changename:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
@@ -1386,7 +1393,30 @@ def lineBot(op):
                     if msg._from in Owner:
                         settings["dblacklist"] = True
                         nadya.sendMessage(msg.to,"Send Contact")
-#-------------------------------------------------------------------------------
+#=======================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#=======================================================================================
                 elif text.lower() == 'banlist':
                     if msg._from in Owner:
                         if settings["blacklist"] == {}:
@@ -1459,139 +1489,73 @@ def lineBot(op):
                             txt += u'@Alin \n'
                         nadya.sendMessage(to, text=txt, contentMetadata={u'MENTION': json.dumps({'MENTIONEES':b})}, contentType=0)
                         nadya.sendMessage(to, "Total {} Mention".format(str(len(nama))))          
+
                 elif text.lower() == 'lurking on':
-                    tz = pytz.timezone("Asia/Jakarta")
-                    timeNow = datetime.now(tz=tz)
-                    day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
-                    hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
-                    bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
-                    hr = timeNow.strftime("%A")
-                    bln = timeNow.strftime("%m")
-                    for i in range(len(day)):
-                        if hr == day[i]: hasil = hari[i]
-                    for k in range(0, len(bulan)):
-                        if bln == str(k): bln = bulan[k-1]
-                    readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
-                    if msg.to in read['readPoint']:
-                            try:
-                                del read['readPoint'][msg.to]
-                                del read['readMember'][msg.to]
-                                del read['readTime'][msg.to]
-                            except:
-                                pass
-                            read['readPoint'][msg.to] = msg.id
-                            read['readMember'][msg.to] = ""
-                            read['readTime'][msg.to] = datetime.now().strftime('%H:%M:%S')
-                            read['ROM'][msg.to] = {}
-                            with open('read.json', 'w') as fp:
-                                json.dump(read, fp, sort_keys=True, indent=4)
-                                nadya.sendMessage(msg.to,"Lurking already on")
-                    else:
-                        try:
-                            del read['readPoint'][msg.to]
-                            del read['readMember'][msg.to]
-                            del read['readTime'][msg.to]
-                        except:
-                            pass
-                        read['readPoint'][msg.to] = msg.id
-                        read['readMember'][msg.to] = ""
-                        read['readTime'][msg.to] = datetime.now().strftime('%H:%M:%S')
-                        read['ROM'][msg.to] = {}
-                        with open('read.json', 'w') as fp:
-                            json.dump(read, fp, sort_keys=True, indent=4)
-                            nadya.sendMessage(msg.to, "Set reading point:\n" + readTime)
-                            
+                        tz = pytz.timezone("Asia/Makassar")
+                        timeNow = datetime.now(tz=tz)
+                        day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
+                        hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
+                        bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+                        hr = timeNow.strftime("%A")
+                        bln = timeNow.strftime("%m")
+                       for i in range(len(day)):
+                               if hr == day[i]: hasil = hari[i]
+                       for k in range(0, len(bulan)):
+                               if bln == str(k): bln = bulan[k-1]
+                       readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
+                       if to in read['readPoint']:
+                              try:
+                                       del read['readPoint'][to]
+                                       del read['readMember'][to]
+                              except:
+                                       pass
+                              read['readPoint'][to] = msg_id
+                              read['readMember'][to] = []
+                              nadya.sendMessage(to, "Lurking telah diaktifkan")
+                       else:
+                              try:
+                                       del read['readPoint'][to]
+                                       del read['readMember'][to]
+                              except:
+                                       pass
+                              read['readPoint'][to] = msg_id
+                              read['readMember'][to] = []
+                              nadya.sendMessage(to, "Set reading point : \n{}".format(readTime))
                 elif text.lower() == 'lurking off':
-                    tz = pytz.timezone("Asia/Jakarta")
-                    timeNow = datetime.now(tz=tz)
-                    day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
-                    hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
-                    bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
-                    hr = timeNow.strftime("%A")
-                    bln = timeNow.strftime("%m")
-                    for i in range(len(day)):
-                        if hr == day[i]: hasil = hari[i]
-                    for k in range(0, len(bulan)):
-                        if bln == str(k): bln = bulan[k-1]
-                    readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
-                    if msg.to not in read['readPoint']:
-                        nadya.sendMessage(msg.to,"Lurking already off")
-                    else:
-                        try:
-                            del read['readPoint'][msg.to]
-                            del read['readMember'][msg.to]
-                            del read['readTime'][msg.to]
-                        except:
-                              pass
-                        nadya.sendMessage(msg.to, "Delete reading point:\n" + readTime)
-    
-                elif text.lower() == 'lurking reset':
-                    tz = pytz.timezone("Asia/Jakarta")
-                    timeNow = datetime.now(tz=tz)
-                    day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
-                    hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
-                    bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
-                    hr = timeNow.strftime("%A")
-                    bln = timeNow.strftime("%m")
-                    for i in range(len(day)):
-                        if hr == day[i]: hasil = hari[i]
-                    for k in range(0, len(bulan)):
-                        if bln == str(k): bln = bulan[k-1]
-                    readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
-                    if msg.to in read["readPoint"]:
-                        try:
-                            del read["readPoint"][msg.to]
-                            del read["readMember"][msg.to]
-                            del read["readTime"][msg.to]
-                        except:
-                            pass
-                        nadya.sendMessage(msg.to, "Reset reading point:\n" + readTime)
-                    else:
-                        nadya.sendMessage(msg.to, "Lurking belum diaktifkan ngapain di reset?")
-                        
-                elif text.lower() == 'lurking':
-                    tz = pytz.timezone("Asia/Jakarta")
-                    timeNow = datetime.now(tz=tz)
-                    day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
-                    hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
-                    bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
-                    hr = timeNow.strftime("%A")
-                    bln = timeNow.strftime("%m")
-                    for i in range(len(day)):
-                        if hr == day[i]: hasil = hari[i]
-                    for k in range(0, len(bulan)):
-                        if bln == str(k): bln = bulan[k-1]
-                    readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
-                    if receiver in read['readPoint']:
-                        if read["ROM"][receiver].items() == []:
-                            nadya.sendMessage(receiver,"[ Reader ]:\nNone")
+                        tz = pytz.timezone("Asia/Makassar")
+                        timeNow = datetime.now(tz=tz)
+                        day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
+                        hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
+                        bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+                        hr = timeNow.strftime("%A")
+                        bln = timeNow.strftime("%m")
+                        for i in range(len(day)):
+                                if hr == day[i]: hasil = hari[i]
+                        for k in range(0, len(bulan)):
+                                if bln == str(k): bln = bulan[k-1]
+                        readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
+                        if to not in read['readPoint']:
+                                nadya.sendMessage(to,"Lurking telah dinonaktifkan")
                         else:
-                            chiya = []
-                            for rom in read["ROM"][receiver].items():
-                                chiya.append(rom[1])
-                            cmem = nadya.getContacts(chiya) 
-                            zx = ""
-                            zxc = ""
-                            zx2 = []
-                            xpesan = '[ Reader ]:\n'
-                        for x in range(len(cmem)):
-                            xname = str(cmem[x].displayName)
-                            pesan = ''
-                            pesan2 = pesan+"@c\n"
-                            xlen = str(len(zxc)+len(xpesan))
-                            xlen2 = str(len(zxc)+len(pesan2)+len(xpesan)-1)
-                            zx = {'S':xlen, 'E':xlen2, 'M':cmem[x].mid}
-                            zx2.append(zx)
-                            zxc += pesan2
-                        text = xpesan+ zxc + "\n[ Lurking time ]: \n" + readTime
-                        try:
-                            nadya.sendMessage(receiver, text, contentMetadata={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}, contentType=0)
-                        except Exception as error:
-                            print (error)
-                        pass
-                    else:
-                        nadya.sendMessage(receiver,"Lurking has not been set.")
-                        
+                                try:
+                                        del read['readPoint'][to]
+                                        del read['readMember'][to]
+                                except:
+                                        pass
+                                nadya.sendMessage(to, "Delete reading point : \n{}".format(readTime))
+                elif text.lower() == 'lurking ':
+                      if to in read['readPoint']:
+                              if read["readMember"][to] == []:
+                                      return nadya.sendMessage(to, "Tidak Ada Sider")
+                              else:
+                                      no = 0
+                                      result = "╔══[ Reader ]"
+                                      for dataRead in read["readMember"][to]:
+                                              no += 1
+                                              result += "\n╠ {}. ".format(str(no))
+                                              result += "\n╚══[ Total {} Sider ]".format(str(len(read["readMember"][to])))
+                                              nadya.sendMessage(to, result, contentMetadata={'MENTION':str('{"MENTIONEES":'+read["readMember"][to].replace(' ','')+'}')}, contentType=0)
+                                              read['readMember'][to] = []
 #==============================================================================#
                 elif msg.text.lower().startswith("say-af "):
                     sep = text.split(" ")
@@ -2781,26 +2745,25 @@ def lineBot(op):
                     ret_ += "\n╠ Zodiak : {}".format(str(data["data"]["zodiak"]))
                     ret_ += "\n╚══[ Success ]"
                     nadya.sendMessage(to, str(ret_))
-                elif 'instagraminfo ' in msg.text.lower():
-                    try:
-                        instagram = msg.text.lower().replace("instagraminfo ","")
-                        html = requests.get('https://www.instagram.com/' + instagram + '/?')
-                        soup = BeautifulSoup(html.text, 'html.parser')
-                        data = soup.find_all('meta', attrs={'property':'og:description'})
-                        text = data[0].get('content').split()
-                        data1 = soup.find_all('meta', attrs={'property':'og:image'})
-                        text1 = data1[0].get('content').split()
-                        user = "╠Name: " + text[-2] + "\n"
-                        user1 = "╠Username: " + text[-1] + "\n"
-                        followers = "╠Followers: " + text[0] + "\n"
-                        following = "╠Following: " + text[2] + "\n"
-                        post = "╠Post: " + text[4]
-                        detail = "╔══[ Profile Instagram ]\n"
-                        details = "\n╚══[ https://www.instagram.com/{} ]".format(instagram)
-                        nadya.sendMessage(msg.to, detail + user + user1 + followers + following + post + details)
-                        nadya.sendImageWithURL(msg.to, text1[0])
-                    except Exception as njer:
-                            nadya.sendmessage(msg.to, str(njer))
+                elif msg.text.lower().startswith("instagraminfo"):
+                    sep = text.split(" ")
+                    txt = text.replace(sep[0] + " ","")
+                    url = requests.get("http://rahandiapi.herokuapp.com/instainfo/{}?key=betakey".format(txt))
+                    data = url.json()
+                    icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/599px-Instagram_icon.png"
+                    name = "Instagram"
+                    link = "https://www.instagram.com/{}".format(data["result"]["username"])
+                    result = "╔══[ Instagram Info ]"
+                    result += "\n╠ Name : {}".format(data["result"]["name"])
+                    result += "\n╠ Username: {}".format(data["result"]["username"])
+                    result += "\n╠ Bio : {}".format(data["result"]["bio"])
+                    result += "\n╠ Follower : {}".format(data["result"]["follower"])
+                    result += "\n╠ Following : {}".format(data["result"]["following"])
+                    result += "\n╠ Private : {}".format(data["result"]["private"])
+                    result += "\n╠ Post : {}".format(data["result"]["mediacount"])
+                    result += "\n╚══[ Finish ]"
+                    nadya.sendImageWithURL(to, data["result"]["url"])
+                    nadya.sendFooter(to, result, icon, name, link)
                 elif "searchimage" in msg.text.lower():
                     separate = msg.text.split(" ")
                     search = msg.text.replace(separate[0] + " ","")
@@ -2965,7 +2928,7 @@ def lineBot(op):
                     try:
                         ret_ = "╔══[ Details Post ]"
                         if msg.contentMetadata["serviceType"] == "GB":
-                            contact = client.getContact(sender)
+                            contact = nadya.getContact(sender)
                             auth = "\n╠ Penulis : {}".format(str(contact.displayName))
                         else:
                             auth = "\n╠ Penulis : {}".format(str(msg.contentMetadata["serviceName"]))
