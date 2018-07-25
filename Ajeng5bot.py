@@ -2797,31 +2797,37 @@ def lineBot(op):
                         ret_ += "\n╚══[ Total {} ]".format(len(datas))
                         nadya.sendMessage(to, str(ret_))
                         
-                elif "searchmusic " in msg.text.lower():
-                            try:                    
-                                search = text.replace("searchmusic ","")
-                                r = requests.get("https://farzain.xyz/api/joox.php?id={}".format(urllib.parse.quote(search)))
-                                data = r.text
-                                data = json.loads(data)
-                                info = data["info"]
-                                audio = data["audio"]
-                                hasil = "「 Hasil Musik 」\n"
-                                hasil += "\nPenyanyi : {}".format(str(info["penyanyi"]))
-                                hasil += "\nJudul : {}".format(str(info["judul"]))
-                                hasil += "\nAlbum : {}".format(str(info["album"]))
-                                hasil += "\n\nLink : \n1. Image : {}".format(str(data["gambar"]))
-                                hasil += "\n\nLink : \n2. MP3 : {}".format(str(audio["mp3"]))
-                                hasil += "\n\nLink : \n3. M4A : {}".format(str(audio["m4a"]))
-                                nadya.sendImageWithURL(to, str(data["gambar"]))
-                                nadya.sendMessage(to, str(hasil))
-                                nadya.sendMessage(to, "Downloading...")
-                                nadya.sendMessage(to, "「 Result MP3 」")
-                                nadya.sendAudioWithURL(to, str(audio["mp3"]))
-                                nadya.sendMessage(to, "「 Result M4A 」")
-                                nadya.sendVideoWithURL(to, str(audio["m4a"]))
-                                nadya.sendMessage(to, "Success Download...")
-                            except Exception as error:
-                            	nadya.sendMessage(to, "「 Result Error 」\n" + str(error))
+                elif msg.text.lower().startswith("searchmusic "):
+                        sep = text.split(" ")
+                        query = text.replace(sep[0] + " ","")
+                        cond = query.split("|")
+                        search = str(cond[0])
+                        url = requests.get("https://dzin.me/api/music/search/?apikey=beta&search={}".format(str(search)))
+                        data = json.loads(url)
+                        if len(cond) == 1:
+                                num = 0
+                                ret_ = "╔══[ Result Music ]"
+                                for music in data["result"]:
+                                        num += 1
+                                        ret_ += "\n╠ {}. {}".format(str(num), str(music["single"]))
+                                ret_ += "\n╚══[ Total {} Music ]".format(str(len(data["result"])))
+                                ret_ += "\n\nUntuk mengirim music, silahkan gunakan command {}SearchMusic {}|「number」".format(str(setKey), str(search))
+                                nadya.sendMessage(to, str(ret_))
+                        elif len(cond) == 2:
+                                num = int(cond[1])
+                                if num <= len(data["result"]):
+                                        music = data["result"][num - 1]
+                                        url = requests.get("http://api.ntcorp.us/joox/song_info?sid={}".format(str(music["sid"])))
+                                        data = json.loads(url)
+                                        ret_ = "╔══[ Music ]"
+                                        ret_ += "\n╠ Title : {}".format(str(data["result"]["song"]))
+                                        ret_ += "\n╠ Album : {}".format(str(data["result"]["album"]))
+                                        ret_ += "\n╠ Size : {}".format(str(data["result"]["size"]))
+                                        ret_ += "\n╠ Link : {}".format(str(data["result"]["mp3"][0]))
+                                        ret_ += "\n╚══[ Finish ]"
+                                        nadya.sendImageWithURL(to, str(data["result"]["img"]))
+                                        nadya.sendMessage(to, str(ret_))
+                                        nadya.sendAudioWithURL(to, str(data["result"]["mp3"][0]))
                             
                 elif "searchlyric" in msg.text.lower():
                     sep = text.split(" ")
