@@ -1498,29 +1498,29 @@ def lineBot(op):
                         bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
                         hr = timeNow.strftime("%A")
                         bln = timeNow.strftime("%m")
-                       for i in range(len(day)):
-                               if hr == day[i]: hasil = hari[i]
-                       for k in range(0, len(bulan)):
-                               if bln == str(k): bln = bulan[k-1]
-                       readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
-                       if to in read['readPoint']:
-                              try:
-                                       del read['readPoint'][to]
-                                       del read['readMember'][to]
-                              except:
-                                       pass
-                              read['readPoint'][to] = msg_id
-                              read['readMember'][to] = []
-                              nadya.sendMessage(to, "Lurking telah diaktifkan")
-                       else:
-                              try:
-                                       del read['readPoint'][to]
-                                       del read['readMember'][to]
-                              except:
-                                       pass
-                              read['readPoint'][to] = msg_id
-                              read['readMember'][to] = []
-                              nadya.sendMessage(to, "Set reading point : \n{}".format(readTime))
+                        for i in range(len(day)):
+                                if hr == day[i]: hasil = hari[i]
+                        for k in range(0, len(bulan)):
+                                if bln == str(k): bln = bulan[k-1]
+                        readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
+                        if to in read['readPoint']:
+                                try:
+                                        del read['readPoint'][to]
+                                        del read['readMember'][to]
+                                except:
+                                        pass
+                                read['readPoint'][to] = msg_id
+                                read['readMember'][to] = []
+                                nadya.sendMessage(to, "Lurking telah diaktifkan")
+                        else:
+                                try:
+                                        del read['readPoint'][to]
+                                        del read['readMember'][to]
+                                except:
+                                        pass
+                               read['readPoint'][to] = msg_id
+                               read['readMember'][to] = []
+                               nadya.sendMessage(to, "Set reading point : \n{}".format(readTime))
                 elif text.lower() == 'lurking off':
                         tz = pytz.timezone("Asia/Makassar")
                         timeNow = datetime.now(tz=tz)
@@ -2811,7 +2811,7 @@ def lineBot(op):
                                         num += 1
                                         ret_ += "\n╠ {}. {}".format(str(num), str(music["single"]))
                                 ret_ += "\n╚══[ Total {} Music ]".format(str(len(data["result"])))
-                                ret_ += "\n\nUntuk mengirim music, silahkan gunakan command {}SearchMusic {}|「number」".format(str(setKey), str(search))
+                                ret_ += "\n\nUntuk mengirim music, silahkan gunakan command SearchMusic {}|「number」".format(str(search))
                                 nadya.sendMessage(to, str(ret_))
                         elif len(cond) == 2:
                                 num = int(cond[1])
