@@ -1085,7 +1085,7 @@ def lineBot(op):
   #                  psn = ['jangan tag alx qmac >:(','pc aja alx nya','apa sih tag tag alx akmj >:(','dia lagi tidur qmac >:(']
    #                 jwb = random.choice(psn)
     #                nadya.sendMessage(msg.to,jwb)
-                elif msg.text.lower().startswith("bot1changename:"):
+                elif msg.text.lower().startswith("b1name:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
                     string = text.replace(sep[0] + " ","")
@@ -1094,7 +1094,7 @@ def lineBot(op):
                         profile.displayName = string
                         nadya.updateProfile(profile)
                         nadya.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
-                elif msg.text.lower().startswith("bot2changename:"):
+                elif msg.text.lower().startswith("b2name:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
                     string = text.replace(sep[0] + " ","")
@@ -1103,7 +1103,7 @@ def lineBot(op):
                         profile.displayName = string
                         ki.updateProfile(profile)
                         ki.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
-                elif msg.text.lower().startswith("bot3changename:"):
+                elif msg.text.lower().startswith("b3name:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
                     string = text.replace(sep[0] + " ","")
@@ -1112,7 +1112,7 @@ def lineBot(op):
                         profile.displayName = string
                         ki2.updateProfile(profile)
                         ki2.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
-                elif msg.text.lower().startswith("bot4changename:"):
+                elif msg.text.lower().startswith("b4name:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
                     string = text.replace(sep[0] + " ","")
@@ -1121,7 +1121,7 @@ def lineBot(op):
                         profile.displayName = string
                         ki3.updateProfile(profile)
                         ki3.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
-                elif msg.text.lower().startswith("bot5changename:"):
+                elif msg.text.lower().startswith("b5name:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
                     string = text.replace(sep[0] + " ","")
@@ -1130,6 +1130,47 @@ def lineBot(op):
                         profile.displayName = string
                         ki4.updateProfile(profile)
                         ki4.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
+                elif msg.text.lower().startswith("b1bio: "):
+                    sep = text.split(" ")
+                    bio = text.replace(sep[0] + " ","")
+                    if len(bio) <= 500:
+                            profile = nadya.getProfile()
+                            profile.displayName = bio
+                            nadya.updateProfile(profile)
+                            nadya.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
+                elif msg.text.lower().startswith("b2bio: "):
+                    sep = text.split(" ")
+                    bio = text.replace(sep[0] + " ","")
+                    if len(bio) <= 500:
+                            profile = ki.getProfile()
+                            profile.displayName = bio
+                            ki.updateProfile(profile)
+                            ki.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
+                elif msg.text.lower().startswith("b3bio: "):
+                    sep = text.split(" ")
+                    bio = text.replace(sep[0] + " ","")
+                    if len(bio) <= 500:
+                            profile = ki2.getProfile()
+                            profile.displayName = bio
+                            ki2.updateProfile(profile)
+                            ki2.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
+                elif msg.text.lower().startswith("b4bio: "):
+                    sep = text.split(" ")
+                    bio = text.replace(sep[0] + " ","")
+                    if len(bio) <= 500:
+                            profile = ki3.getProfile()
+                            profile.displayName = bio
+                            ki3.updateProfile(profile)
+                            ki3.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
+                elif msg.text.lower().startswith("b2bio: "):
+                    sep = text.split(" ")
+                    bio = text.replace(sep[0] + " ","")
+                    if len(bio) <= 500:
+                            profile = ki4.getProfile()
+                            profile.displayName = bio
+                            ki4.updateProfile(profile)
+                            ki4.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
+
                 elif msg.text.lower() == "bot1changepictureprofile":
                   if msg._from in Owner:
                     settings["bot1changePictureProfile"] = True
@@ -1153,6 +1194,15 @@ def lineBot(op):
                 elif msg.text.lower() == "changegrouppicture":
                     settings["changeGroupPicture"] = True
                     nadya.sendMessage(to, "Silahkan kirim gambarnya")
+
+                elif text.lower().startswith("broadcast: "):
+                    sep = text.split(" ")
+                    txt = text.replace(sep[0] + " ","")
+                    groups = nadya.getGroupIdsJoined()
+                    for group in groups:
+                            nadya.sendMessage(group, "[ Broadcast ]\n{}".format(str(txt)))
+                    nadya.sendMessage(to, "Berhasil broadcast ke {} group".format(str(len(groups))))
+
                 elif text.lower().startswith("pcid"):
                     dan = text.split("|")
                     x = nadya.findContactsByUserid(dan[1])
@@ -1518,9 +1568,9 @@ def lineBot(op):
                                         del read['readMember'][to]
                                 except:
                                         pass
-                               read['readPoint'][to] = msg_id
-                               read['readMember'][to] = []
-                               nadya.sendMessage(to, "Set reading point : \n{}".format(readTime))
+                                read['readPoint'][to] = msg_id
+                                read['readMember'][to] = []
+                                nadya.sendMessage(to, "Set reading point : \n{}".format(readTime))
                 elif text.lower() == 'lurking off':
                         tz = pytz.timezone("Asia/Makassar")
                         timeNow = datetime.now(tz=tz)
@@ -3875,16 +3925,35 @@ def lineBot(op):
                 nadya.sendMessage(op.param1,"")
 #==============================================================================#
         if op.type == 55:
-            print ("[ 55 ] NOTIFIED READ MESSAGE")
-            if op.param1 in read["readPoint"]:
-                _name = nadya.getContact(op.param2).displayName
-                tz = pytz.timezone("Asia/Jakarta")
-                timeNow = datetime.now(tz=tz)
-                timeHours = datetime.strftime(timeNow," (%H:%M)")
-                read["readMember"][op.param1][op.param2] = str(_name) + str(timeHours)
-        backupData()
-    except Exception as error:
-        logError(error)
+            try:
+                if RfuCctv['Point1'][fast.param1]==True:
+                    if fast.param1 in RfuCctv['Point2']:
+                        Name = cl.getContact(fast.param2).displayName
+                        if Name in RfuCctv['Point3'][fast.param1]:
+                            pass
+                        else:
+                            RfuCctv['Point3'][fast.param1] += "\n~" + Name
+                            zxn=["Jangan sider terus ","Jangan sider ","Halo ayo kita ngobrol ","Turun kak ikut chat ","Sider mulu ","sider tak doakan jones ","Ciyyee yang lagi ngintip ","Hai Kang ngintip "]
+                            nadya.mentionWithRFU(fast.param1, "Hii ",+Name + "\n " + str(random.choice(zxn)))
+                    else:
+                        pass
+                else:
+                    pass
+            except:
+                pass
+
+        if op.type == 55:
+            try:
+                if fast.param1 in Squad['readPoint']:
+                    if fast.param2 in Squad['readMember'][fast.param1]:
+                        pass
+                    else:
+                        Squad['readMember'][fast.param1] += fast.param2
+                    Squad['ROM'][fast.param1][fast.param2] = fast.param2
+                else:
+                   pass
+            except:
+                pass
 #==============================================================================#
         if op.type == 26:
             msg = op.message
