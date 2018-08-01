@@ -12,8 +12,8 @@ from googletrans import Translator
 botStart = time.time()
 
 #nadya = LINE()
-nadya = LINE("EuG96GA7ciU9ECQljHsc.s2kq8Aax4k7yc5nFByAYVa.OWtpxnDX6J0GAS7VLZNtnFThJGBCpwzGOwmnNAcfRqk=")
-#nadya = LINE("EuPTSZJ49JkIbXAQJX86.VY6sOdr9IniV6PQ5YrYBHG.tIO5eYBwNAETQJRfy1WwtWOZHTU3F5bv542aP6+YacQ=")
+#nadya = LINE("EuG96GA7ciU9ECQljHsc.s2kq8Aax4k7yc5nFByAYVa.OWtpxnDX6J0GAS7VLZNtnFThJGBCpwzGOwmnNAcfRqk=")
+nadya = LINE("EuFCtzYVtrV3Csp8B6X0.ocHod1lJjuXSUThjwpxQqa.mpdZe4Y/eCM2I8HSo/8jPWKX/1zMNKg0jLve0pEz0io=")
 #nadya = LINE("Email","Password")
 nadya.log("Auth Token : " + str(nadya.authToken))
 channelToken = nadya.getChannelResult()
@@ -27,7 +27,7 @@ channelToken = ki.getChannelResult()
 ki.log("Channel Token : " + str(channelToken))
 
 #ki2 = LINE()
-ki2 = LINE("EuFCtzYVtrV3Csp8B6X0.ocHod1lJjuXSUThjwpxQqa.mpdZe4Y/eCM2I8HSo/8jPWKX/1zMNKg0jLve0pEz0io=")
+ki2 = LINE("EuG96GA7ciU9ECQljHsc.s2kq8Aax4k7yc5nFByAYVa.OWtpxnDX6J0GAS7VLZNtnFThJGBCpwzGOwmnNAcfRqk=")
 #ki2 = LINE("Email","Password")
 ki2.log("Auth Token : " + str(ki2.authToken))
 channelToken = ki2.getChannelResult()
@@ -87,8 +87,8 @@ responsename4 = ki3.getProfile().displayName
 responsename5 = ki4.getProfile().displayName
 #==============================================================================#
 
-
-
+with open('creator.json', 'r') as fp:
+    creator = json.load(fp)
 
 with open('Owner.json', 'r') as fp:
     Owner = json.load(fp)
@@ -906,12 +906,13 @@ def lineBot(op):
                     nadya.sendMessage(msg.to, "ᴡᴇ ᴀʀᴇ ᴛᴀᴋɪs~ᴢ")
                 elif text.lower() == "alo":
                     nadya.sendMessage(msg.to, "Alo juga")
-                elif text.lower() == "kam":
-                    nadya.sendMessage(msg.to, "pret")
+#                elif text.lower() == "kam":
+ #                   nadya.sendMessage(msg.to, "pret")
                 elif text.lower() == "hai":
                     nadya.sendMessage(msg.to, "hai juga")
-                elif text.lower() == "kamm":
-                    nadya.sendMessage(msg.to, "Prett")
+                elif text.lower() == "abil":
+                  if msg._from in creator:
+                    nadya.sendMessage(msg.to, "Apa sayangg")
                     
                 elif msg.text.lower() == 'mybot':
                     if msg._from in Owner:
@@ -1082,11 +1083,11 @@ def lineBot(op):
                     psn = ['Iya','Tidak','Iya','Tidak','Tidak','Iya']
                     jwb = random.choice(psn)
                     nadya.sendMessage(msg.to,jwb)
-#                elif msg.text.lower().startswith("@alx"):
- #                   sep = text.split(" ")
-  #                  psn = ['jangan tag alx qmac >:(','pc aja alx nya','apa sih tag tag alx akmj >:(','dia lagi tidur qmac >:(']
-   #                 jwb = random.choice(psn)
-    #                nadya.sendMessage(msg.to,jwb)
+                elif msg.text.lower().startswith("@sab."):
+                    sep = text.split(" ")
+                    psn = ['jangan tag sab qmac','pc aja sab nya','apa sih tag tag sab akmj','sab lagi curcol diem deh']
+                    jwb = random.choice(psn)
+                    nadya.sendMessage(msg.to,jwb)
                 elif msg.text.lower().startswith("b1name:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
@@ -1361,32 +1362,32 @@ def lineBot(op):
                 elif text.lower() == 'groupname':
                     gid = nadya.getGroup(to)
                     nadya.sendMessage(to, "[Nama Group : ]\n" + gid.name)
-                elif text.lower() == 'qr':
-                    if msg.toType == 2:
-                        group = nadya.getGroup(to)
-                        if group.preventedJoinByTicket == False:
-                            ticket = nadya.reissueGroupTicket(to)
-                            nadya.sendMessage(to, "[ Group Ticket ]\nhttps://line.me/R/ti/g/{}".format(str(ticket)))
-                        else:
-                            nadya.sendMessage(to, "Grup qr tidak terbuka silahkan buka terlebih dahulu dengan perintah {}openqr".format(str(settings["keyCommand"])))
-                elif text.lower() == 'qr on':
-                    if msg.toType == 2:
-                        group = nadya.getGroup(to)
-                        if group.preventedJoinByTicket == False:
-                            nadya.sendMessage(to, "Grup qr sudah terbuka")
-                        else:
-                            group.preventedJoinByTicket = False
-                            nadya.updateGroup(group)
-                            nadya.sendMessage(to, "Berhasil membuka grup qr")
-                elif text.lower() == 'qr off':
-                    if msg.toType == 2:
-                        group = nadya.getGroup(to)
-                        if group.preventedJoinByTicket == True:
-                            nadya.sendMessage(to, "Grup qr sudah tertutup")
-                        else:
-                            group.preventedJoinByTicket = True
-                            nadya.updateGroup(group)
-                            nadya.sendMessage(to, "Berhasil menutup grup qr")
+#                elif text.lower() == 'qr':
+ #                   if msg.toType == 2:
+  #                      group = nadya.getGroup(to)
+   #                     if group.preventedJoinByTicket == False:
+    #                        ticket = nadya.reissueGroupTicket(to)
+     #                       nadya.sendMessage(to, "[ Group Ticket ]\nhttps://line.me/R/ti/g/{}".format(str(ticket)))
+#                        else:
+ #                           nadya.sendMessage(to, "Grup qr tidak terbuka silahkan buka terlebih dahulu dengan perintah {}openqr".format(str(settings["keyCommand"])))
+#                elif text.lower() == 'qr on':
+ #                    if msg.toType == 2:
+  #                      group = nadya.getGroup(to)
+   #                     if group.preventedJoinByTicket == False:
+    #                        nadya.sendMessage(to, "Grup qr sudah terbuka")
+     #                   else:
+      #                      group.preventedJoinByTicket = False
+       #                     nadya.updateGroup(group)
+        #                    nadya.sendMessage(to, "Berhasil membuka grup qr")
+         #       elif text.lower() == 'qr off':
+          #           if msg.toType == 2:
+           #             group = nadya.getGroup(to)
+            #            if group.preventedJoinByTicket == True:
+             #               nadya.sendMessage(to, "Grup qr sudah tertutup")
+              #          else:
+               #             group.preventedJoinByTicket = True
+                #            nadya.updateGroup(group)
+                 #           nadya.sendMessage(to, "Berhasil menutup grup qr")
                 elif text.lower() == 'groupinfo':
                     group = nadya.getGroup(to)
                     try:
@@ -1531,7 +1532,26 @@ def lineBot(op):
                                                     print (msg.to,[g.mid])
                                                 except:
                                                     nadya.sendMessage(msg.to,"") 
-#==============================================================================#          
+#==============================================================================#
+                elif text.lower() == 'sider on':
+                        try:
+                            del RfuCctv['Point2'][kirim]
+                            del RfuCctv['Point3'][kirim]
+                            del RfuCctv['Point1'][kirim]
+                        except:
+                            pass
+                        RfuCctv['Point2'][kirim] = msg.id
+                        RfuCctv['Point3'][kirim] = ""
+                        RfuCctv['Point1'][kirim]=True
+                        nadya.sendMessage(kirim,"Sider Set to On..")
+
+                elif text.lower() == 'sider off':
+                      if kirim in RfuCctv['Point2']:
+                          RfuCctv['Point1'][kirim]=False
+                          nadya.sendMessage(kirim, RfuCctv['Point3'][kirim])
+                      else:
+                          nadya.sendMessage(kirim, "Off not Going")
+
                 elif text.lower() == 'mention':
                     group = nadya.getGroup(msg.to)
                     nama = [contact.mid for contact in group.members]
