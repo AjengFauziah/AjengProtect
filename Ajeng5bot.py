@@ -142,16 +142,16 @@ def sendMessageWithMention(to, mid):
         logError(error)
         
 def helpmessage():
-    helpMessage = "╭─────────────────────────╼" + "\n" + \
-                  "├─⊶ Help ⊷────────────╼" + "\n" + \
+    helpMessage = "╭─────────────╼" + "\n" + \
+                  "├─⊶ Help ⊷──────╼" + "\n" + \
                   "├≺ Translate" + "\n" + \
                   "├≺ Texttospeech" + "\n" + \
-                  "├─⊶ Status ⊷──────────╼" + "\n" + \
+                  "├─⊶ Status ⊷──────╼" + "\n" + \
                   "├≺ Restart" + "\n" + \
                   "├≺ Runtime" + "\n" + \
                   "├≺ Speed" + "\n" + \
                   "├≺ About" + "\n" + \
-                  "├─⊶ Self ⊷────────────╼" + "\n" + \
+                  "├─⊶ Steal ⊷──────╼" + "\n" + \
                   "├≺ Me" + "\n" + \
                   "├≺ MyMid" + "\n" + \
                   "├≺ MyName" + "\n" + \
@@ -166,7 +166,7 @@ def helpmessage():
                   "├≺ StealPicture" + "\n" + \
                   "├≺ StealVideoProfile" + "\n" + \
                   "├≺ StealCover" + "\n" + \
-                  "├─⊶ Group ⊷───────────╼" + "\n" + \
+                  "├─⊶ Group ⊷─────╼" + "\n" + \
                   "├≺ GroupCreator" + "\n" + \
                   "├≺ GroupId" + "\n" + \
                   "├≺ GroupName" + "\n" + \
@@ -177,13 +177,13 @@ def helpmessage():
                   "├≺ GroupMemberList" + "\n" + \
                   "├≺ GroupInfo" + "\n" + \
                   "├≺ Cium" + "\n" + \
-                  "├─⊶ Special ⊷─────────╼" + "\n" + \
+                  "├─⊶ Special ⊷─────╼" + "\n" + \
                   "├≺ Mimic「On/Off」" + "\n" + \
                   "├≺ MimicList" + "\n" + \
                   "├≺ MimicAdd" + "\n" + \
                   "├≺ MimicDel" + "\n" + \
                   "├≺ Mention" + "\n" + \
-                  "├─⊶ Media ⊷───────────╼" + "\n" + \
+                  "├─⊶ Media ⊷─────╼" + "\n" + \
                   "├≺ Kalender" + "\n" + \
                   "├≺ CheckDate" + "\n" + \
                   "├≺ InstagramInfo" + "\n" + \
@@ -192,7 +192,7 @@ def helpmessage():
                   "├≺ SearchMusic" + "\n" + \
                   "├≺ SearchLyric" + "\n" + \
                   "├≺ SearchImage" + "\n" + \
-                  "├─⊶ Bot ⊷─────────────╼" + "\n" + \
+                  "├─⊶ Bot ⊷──────╼" + "\n" + \
                   "├≺ AdminAdd" + "\n" + \
                   "├≺ AdminDel" + "\n" + \
                   "├≺ AdminList" + "\n" + \
@@ -201,6 +201,8 @@ def helpmessage():
                   "├≺ OwnerList" + "\n" + \
                   "├≺ BanContact" + "\n" + \
                   "├≺ UnbanContact" + "\n" + \
+                  "├≺ B(1~5)name:" + "\n" + \
+                  "├≺ B(1~5)bio:" + "\n" + \
                   "├≺ BanList" + "\n" + \
                   "├≺ ClearBan" + "\n" + \
                   "├≺ Takiz" + "\n" + \
@@ -208,7 +210,7 @@ def helpmessage():
                   "├≺ JoinAll" + "\n" + \
                   "├≺ ByeAll" + "\n" + \
                   "├─⊶ Credits By:©Alx ⊷─╼" + "\n" + \
-                  "╰─────────────────────────╼"
+                  "╰────────────╼"
     return helpMessage
     
 def helptexttospeech():
@@ -1131,43 +1133,48 @@ def lineBot(op):
                         ki4.updateProfile(profile)
                         ki4.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
                 elif msg.text.lower().startswith("b1bio: "):
+                  if msg._from in Owner:
                     sep = text.split(" ")
                     bio = text.replace(sep[0] + " ","")
                     if len(bio) <= 500:
                             profile = nadya.getProfile()
-                            profile.displayName = bio
+                            profile.statusMessage = bio
                             nadya.updateProfile(profile)
                             nadya.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
                 elif msg.text.lower().startswith("b2bio: "):
+                  if msg._from in Owner:
                     sep = text.split(" ")
                     bio = text.replace(sep[0] + " ","")
                     if len(bio) <= 500:
                             profile = ki.getProfile()
-                            profile.displayName = bio
+                            profile.statusMessage = bio
                             ki.updateProfile(profile)
                             ki.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
                 elif msg.text.lower().startswith("b3bio: "):
+                  if msg._from in Owner:
                     sep = text.split(" ")
                     bio = text.replace(sep[0] + " ","")
                     if len(bio) <= 500:
                             profile = ki2.getProfile()
-                            profile.displayName = bio
+                            profile.statusMessage = bio
                             ki2.updateProfile(profile)
                             ki2.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
                 elif msg.text.lower().startswith("b4bio: "):
+                  if msg._from in Owner:
                     sep = text.split(" ")
                     bio = text.replace(sep[0] + " ","")
                     if len(bio) <= 500:
                             profile = ki3.getProfile()
-                            profile.displayName = bio
+                            profile.statusMessage = bio
                             ki3.updateProfile(profile)
                             ki3.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
                 elif msg.text.lower().startswith("b2bio: "):
+                  if msg._from in Owner:
                     sep = text.split(" ")
                     bio = text.replace(sep[0] + " ","")
                     if len(bio) <= 500:
                             profile = ki4.getProfile()
-                            profile.displayName = bio
+                            profile.statusMessage = bio
                             ki4.updateProfile(profile)
                             ki4.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
 
@@ -3881,13 +3888,13 @@ def lineBot(op):
                         settings["blacklist"][op.param2] = True
                         
                 elif op.param2 not in Bots:
-                    if op.param2 in admin:
+                    if op.param2 in Owner:
                         pass
                     elif settings["protect"] == True:
                         settings["blacklist"][op.param2] = True
                         random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-                        random.choice(KAC).inviteIntoGroup(op.param1,[op.param3])
-                        random.choice(KAC).sendText(op.param1,"Don't Play bro...!")
+                        ki2.inviteIntoGroup(op.param1,[op.param3])
+                        random.choice(KAC).sendMessage(op.param1,"JANGAN MAEN KICK CUK!")
                         
                 else:
                     pass
@@ -3924,34 +3931,28 @@ def lineBot(op):
             else:
                 nadya.sendMessage(op.param1,"")
 #==============================================================================#
-        if op.type == 55:
+        elif op.type == 55:
             try:
-                if RfuCctv['Point1'][fast.param1]==True:
-                    if fast.param1 in RfuCctv['Point2']:
-                        Name = cl.getContact(fast.param2).displayName
-                        if Name in RfuCctv['Point3'][fast.param1]:
+                if RfuCctv['Point1'][op.param1]==True:
+                    if op.param1 in RfuCctv['Point2']:
+                        Name = nadya.getContact(op.param2).displayName
+                        if Name in RfuCctv['Point3'][op.param1]:
                             pass
                         else:
-                            RfuCctv['Point3'][fast.param1] += "\n~" + Name
-                            zxn=["Jangan sider terus ","Jangan sider ","Halo ayo kita ngobrol ","Turun kak ikut chat ","Sider mulu ","sider tak doakan jones ","Ciyyee yang lagi ngintip ","Hai Kang ngintip "]
-                            nadya.mentionWithRFU(fast.param1, "Hii ",+Name + "\n " + str(random.choice(zxn)))
+                            RfuCctv['Point3'][op.param1] += "\n~" + Name
+                            zxn=[" jangan sider terus"," jangan sider"," ayo kita ngobrol"," turun kak ikut chat"," sider mulu "," sider tak doakan jones "," ciyyee yang lagi ngintip "," kang ngintip "]
+                            if " " in Name:
+                                nick = Name.split(' ')
+                                if len(nick) == 2:
+                                    nadya.mentionWithRFU(op.param1,op.param2,"Hii ","" + str(random.choice(zxn)))
+                                else:
+                                    nadya.mentionWithRFU(op.param1,op.param2,"Nah ","" + str(random.choice(zxn)))
+                            else:
+                                nadya.mentionWithRFU(op.param1,op.param2,"Hey ","" + str(random.choice(zxn)))
                     else:
                         pass
                 else:
                     pass
-            except:
-                pass
-
-        if op.type == 55:
-            try:
-                if fast.param1 in Squad['readPoint']:
-                    if fast.param2 in Squad['readMember'][fast.param1]:
-                        pass
-                    else:
-                        Squad['readMember'][fast.param1] += fast.param2
-                    Squad['ROM'][fast.param1][fast.param2] = fast.param2
-                else:
-                   pass
             except:
                 pass
 #==============================================================================#
