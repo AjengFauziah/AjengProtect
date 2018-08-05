@@ -12,36 +12,40 @@ from googletrans import Translator
 botStart = time.time()
 
 #nadya = LINE()
-#nadya = LINE("EuG96GA7ciU9ECQljHsc.s2kq8Aax4k7yc5nFByAYVa.OWtpxnDX6J0GAS7VLZNtnFThJGBCpwzGOwmnNAcfRqk=")
-nadya = LINE("EuFCtzYVtrV3Csp8B6X0.ocHod1lJjuXSUThjwpxQqa.mpdZe4Y/eCM2I8HSo/8jPWKX/1zMNKg0jLve0pEz0io=")
+nadya = LINE("EvLgT43UeGrJwCfyi0Tf.lCdyoqZN5msDc/pv3aSJFW./gg68VgXTNS3CIM8CoeqzA04swPVh2VWtBKVoRwmKU4=")
+#nadya = LINE("EuFCtzYVtrV3Csp8B6X0.ocHod1lJjuXSUThjwpxQqa.mpdZe4Y/eCM2I8HSo/8jPWKX/1zMNKg0jLve0pEz0io=")
 #nadya = LINE("Email","Password")
 nadya.log("Auth Token : " + str(nadya.authToken))
 channelToken = nadya.getChannelResult()
 nadya.log("Channel Token : " + str(channelToken))
 
 #ki = LINE()
-ki = LINE("EuwTX8t48ihi5aMWYkb5.XbhUGpVqXPFdlc8smhKx5q.wpFvwVvne56J4vN8gM9rxlzGgEyH1r0WAeqB8Nlz5GA=")
+ki = LINE("EvjQwISFLZnO5cYezvm4.1yUbA0p1JC/nDll5qE28ba.GvSUL5Te2gI+rMt+ke6zu07BKM5uxjMDSVQJ9Z9MG6A=")
+#ki = LINE("EuwTX8t48ihi5aMWYkb5.XbhUGpVqXPFdlc8smhKx5q.wpFvwVvne56J4vN8gM9rxlzGgEyH1r0WAeqB8Nlz5GA=")
 #ki = LINE("Email","Password")
 ki.log("Auth Token : " + str(ki.authToken))
 channelToken = ki.getChannelResult()
 ki.log("Channel Token : " + str(channelToken))
 
 #ki2 = LINE()
-ki2 = LINE("EuG96GA7ciU9ECQljHsc.s2kq8Aax4k7yc5nFByAYVa.OWtpxnDX6J0GAS7VLZNtnFThJGBCpwzGOwmnNAcfRqk=")
+ki2 = LINE("Evj8mQfNn6yvq4Xpxcjc.J7uCv+x1CmZzyxmusZ7p+a.gNGuCYo79bTcFGT1I3PonspWeD4VL3NmPH5ZF3JEBkU=")
+#ki2 = LINE("EuG96GA7ciU9ECQljHsc.s2kq8Aax4k7yc5nFByAYVa.OWtpxnDX6J0GAS7VLZNtnFThJGBCpwzGOwmnNAcfRqk=")
 #ki2 = LINE("Email","Password")
 ki2.log("Auth Token : " + str(ki2.authToken))
 channelToken = ki2.getChannelResult()
 ki2.log("Channel Token : " + str(channelToken))
 
 #ki3 = LINE()
-ki3 = LINE("EuUz97vWLRKW3HaPyvX9.cdJcoh2Ng2LUJ+g++C7i6q.Xu4E4xDJkMBHEgnVab0U1kpx5VcYarkc8No38xU08d8=")
+ki3 = LINE("EvdIUOo7e81WVlxwsv98.iq+5EtfHFiPMeuaKDYFp2a.BiRplvl9Da7DNuQXhAx0E4STFY0lsHFK2TAMHaAlUig=")
+#ki3 = LINE("EuUz97vWLRKW3HaPyvX9.cdJcoh2Ng2LUJ+g++C7i6q.Xu4E4xDJkMBHEgnVab0U1kpx5VcYarkc8No38xU08d8=")
 #ki3 = LINE("Email","Password")
 ki3.log("Auth Token : " + str(ki3.authToken))
 channelToken = ki3.getChannelResult()
 ki3.log("Channel Token : " + str(channelToken))
 
 #ki4 = LINE()
-ki4 = LINE("Euvy2kEegkvrMbQflWx6.Xdw13d7L4vYHIcbTQFIh1G.bnMh2t7h7D7f1uVvgUH96ABoHTWgJ2QcrzYarRe4tnc=")
+ki4 = LINE("EvbK5xylsqDVjwKCdQH1.WPJI0F0B18oRk+0dmIy1aq.EFfFMLKgb/p3L89YhyrHUM6t6xgL3DWhnNwqnOpBYcE=")
+#ki4 = LINE("Euvy2kEegkvrMbQflWx6.Xdw13d7L4vYHIcbTQFIh1G.bnMh2t7h7D7f1uVvgUH96ABoHTWgJ2QcrzYarRe4tnc=")
 #ki4 = LINE("Email","Password")
 ki4.log("Auth Token : " + str(ki4.authToken))
 channelToken = ki4.getChannelResult()
@@ -910,9 +914,6 @@ def lineBot(op):
  #                   nadya.sendMessage(msg.to, "pret")
                 elif text.lower() == "hai":
                     nadya.sendMessage(msg.to, "hai juga")
-                elif text.lower() == "abil":
-                  if msg._from in creator:
-                    nadya.sendMessage(msg.to, "Apa sayangg")
                     
                 elif msg.text.lower() == 'mybot':
                     if msg._from in Owner:
