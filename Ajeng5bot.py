@@ -137,6 +137,33 @@ def logError(text):
     with open("errorLog.txt","a") as error:
         error.write("\n[%s] %s" % (str(time), text))
         
+def siderMembers(to, mid):
+    try:
+        arrData = ""
+        textx = "Total Sider User「{}」\nHaii ".format(str(len(mid)))
+        arr = []
+        no = 1
+        num = 2
+        for i in mid:
+            mention = "@x\n"
+            slen = str(len(textx))
+            elen = str(len(textx) + len(mention) - 1)
+            arrData = {'S':slen, 'E':elen, 'M':i}
+            arr.append(arrData)
+            textx += mention+wait["mention"]
+            if no < len(mid):
+                no += 1
+                textx += "%i. " % (num)
+                num=(num+1)
+            else:
+                try:
+                    no = "\n╚══[ {} ]".format(str(nadya.getGroup(to).name))
+                except:
+                    no = "\n╚══[ Success ]"
+        nadya.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+    except Exception as error:
+        nadya.sendMessage(to, "[ INFO ] Error :\n" + str(error))
+        
 def sendMessageWithMention(to, mid):
     try:
         aa = '{"S":"0","E":"3","M":'+json.dumps(mid)+'}'
@@ -1534,24 +1561,30 @@ def lineBot(op):
                                                 except:
                                                     nadya.sendMessage(msg.to,"") 
 #==============================================================================#
-                elif text.lower() == 'sider on':
-                        try:
-                            del RfuCctv['Point2'][kirim]
-                            del RfuCctv['Point3'][kirim]
-                            del RfuCctv['Point1'][kirim]
-                        except:
-                            pass
-                        RfuCctv['Point2'][kirim] = msg.id
-                        RfuCctv['Point3'][kirim] = ""
-                        RfuCctv['Point1'][kirim]=True
-                        nadya.sendMessage(kirim,"Sider Set to On..")
+                elif text.lower == 'sider on':
+                          # if wait["selfbot"] == True:
+                              try:
+                                  tz = pytz.timezone("Asia/Jakarta")
+                                  timeNow = datetime.now(tz=tz)
+                                  nadya.sendMessage(msg.to, "Cek sider diaktifkan\n\nTanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nJam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]")
+                                  del cctv['point'][msg.to]
+                                  del cctv['sidermem'][msg.to]
+                                  del cctv['cyduk'][msg.to]
+                              except:
+                                  pass
+                              cctv['point'][msg.to] = msg.id
+                              cctv['sidermem'][msg.to] = ""
+                              cctv['cyduk'][msg.to]=True
 
                 elif text.lower() == 'sider off':
-                      if kirim in RfuCctv['Point2']:
-                          RfuCctv['Point1'][kirim]=False
-                          nadya.sendMessage(kirim, RfuCctv['Point3'][kirim])
-                      else:
-                          nadya.sendMessage(kirim, "Off not Going")
+                          # if wait["selfbot"] == True:
+                              if msg.to in cctv['point']:
+                                  tz = pytz.timezone("Asia/Jakarta")
+                                  timeNow = datetime.now(tz=tz)
+                                  cctv['cyduk'][msg.to]=False
+                                  nadya.sendMessage(msg.to, "Cek sider off\n\nTanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nJam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]")
+                              else:
+                                  nadya.sendMessage(msg.to, "Sudak tidak aktif")
 
                 elif text.lower() == 'mention':
                     group = nadya.getGroup(msg.to)
