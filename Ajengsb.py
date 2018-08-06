@@ -66,6 +66,19 @@ def logError(text):
     with open("errorLog.txt","a") as error:
         error.write("\n[%s] %s" % (str(time), text))
         
+def changeVideoAndPictureProfile(pict, vids):
+   try:
+       files = {'file': open(vids, 'rb')}
+       obs_params = nadya.genOBSParams({'oid': nadyaMID, 'ver': '2.0', 'type': 'video', 'cat': 'vp.mp4', 'name': 'Hello_World.mp4'})
+       data = {'params': obs_params}
+       r_vp = nadya.server.postContent('{}/talk/vp/upload.nhn'.format(str(nadya.server.LINE_OBS_DOMAIN)), data=data, files=files)
+       if r_vp.status_code != 201:
+           return "Failed update profile"
+       nadya.updateProfilePicture(pict, 'vp')
+       return "Success update profile"
+   except Exception as error:
+       raise Exception("Error change video and picture profile %s"%str(e))    
+
 def sendMessageWithMention(to, mid):
     try:
         aa = '{"S":"0","E":"3","M":'+json.dumps(mid)+'}'
@@ -886,6 +899,12 @@ def lineBot(op):
                         pass
                     else:
                         nadya.sendMessage(receiver,"Lurking has not been set.")
+
+                elif msg.text.lower() == "cvp":
+                    nub = client.downloadFileURL('link pict')
+                    nub1 = client.downloadFileURL('link vid')
+                    changeVideoAndPictureProfile(nub, nub1)
+
 #==============================================================================#
                 elif msg.text.lower().startswith("say-af "):
                     sep = text.split(" ")
