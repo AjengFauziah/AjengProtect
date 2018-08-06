@@ -1561,7 +1561,7 @@ def lineBot(op):
                                                 except:
                                                     nadya.sendMessage(msg.to,"") 
 #==============================================================================#
-                elif text.lower == 'sider on':
+                elif text.lower() == 'sider on':
                           # if wait["selfbot"] == True:
                               try:
                                   tz = pytz.timezone("Asia/Jakarta")
