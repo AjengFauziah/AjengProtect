@@ -236,7 +236,7 @@ def helpmessage():
                   "├≺ B(1~5)bio:" + "\n" + \
                   "├≺ BanList" + "\n" + \
                   "├≺ ClearBan" + "\n" + \
-                  "├≺ Takiz" + "\n" + \
+                  "├≺ Respon" + "\n" + \
                   "├≺ Mybot" + "\n" + \
                   "├≺ JoinAll" + "\n" + \
                   "├≺ ByeAll" + "\n" + \
@@ -933,15 +933,6 @@ def lineBot(op):
                     ki2.sendMessage(msg.to,responsename3)
                     ki3.sendMessage(msg.to,responsename4)
                     ki4.sendMessage(msg.to,responsename5)
-
-                elif text.lower() == "takiz":
-                    nadya.sendMessage(msg.to, "20%\n██▓▓▓▓▓▓▓▓")
-                    ki.sendMessage(msg.to, "40%\n████▓▓▓▓▓▓")
-                    ki2.sendMessage(msg.to, "60%\n██████▓▓▓▓")
-                    ki3.sendMessage(msg.to, "80%\n████████▓▓")
-                    ki4.sendMessage(msg.to, "100%\n██████████")
-                    nadya.sendMessage(msg.to, "ᴡᴇ ᴀʀᴇ ᴀ ʟᴀʀɢᴇ ғᴀᴍɪʟʏ ᴀ ɢʀᴏᴜᴘ ᴇxᴛʀᴇᴍᴇ◢◤")
-                    nadya.sendMessage(msg.to, "ᴡᴇ ᴀʀᴇ ᴛᴀᴋɪs~ᴢ")
                 elif text.lower() == "alo":
                     nadya.sendMessage(msg.to, "Alo juga")
 #                elif text.lower() == "kam":
