@@ -927,6 +927,13 @@ def lineBot(op):
                     settings["autoJoinTicket"] = False
                     nadya.sendMessage(to, "Berhasil menonaktifkan Auto Join Link")                    
 #==============================================================================#
+                elif text.lower() == "respon":
+                    nadya.sendMessage(msg.to,responsename)
+                    ki.sendMessage(msg.to,responsename2)
+                    ki2.sendMessage(msg.to,responsename3)
+                    ki3.sendMessage(msg.to,responsename4)
+                    ki4.sendMessage(msg.to,responsename5)
+
                 elif text.lower() == "takiz":
                     nadya.sendMessage(msg.to, "20%\n██▓▓▓▓▓▓▓▓")
                     ki.sendMessage(msg.to, "40%\n████▓▓▓▓▓▓")

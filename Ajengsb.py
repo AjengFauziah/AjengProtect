@@ -11,7 +11,7 @@ from googletrans import Translator
 #==============================================================================#
 botStart = time.time()
 
-nadya = LINE()
+nadya = LINE("EvvrsntVH0F5WYIJriI1.k5fyNkKZNtM1Had6A6IHGq.0Wlmixqxwnh4eBAr3XHkbyymNhumokrC6Oc/8qTO55Q=")
 #nadya = LINE("TOKEN KAMU")
 #nadya = LINE("Email","Password")
 nadya.log("Auth Token : " + str(nadya.authToken))
@@ -356,8 +356,8 @@ def lineBot(op):
             print ("[ 24 ] NOTIFIED LEAVE ROOM")
             if settings["autoLeave"] == True:
                 nadya.leaveRoom(op.param1)
-        if op.type == 26:
-            print ("[ 26 ] SEND MESSAGE")
+        if op.type == 25:
+            print ("[ 25 ] SEND MESSAGE")
             msg = op.message
             text = msg.text
             msg_id = msg.id
@@ -900,9 +900,9 @@ def lineBot(op):
                     else:
                         nadya.sendMessage(receiver,"Lurking has not been set.")
 
-                elif msg.text.lower() == "cvp":
-                    nub = client.downloadFileURL('link pict')
-                    nub1 = client.downloadFileURL('link vid')
+                elif text.lower() == "cvp":
+                    nub = nadya.downloadFileURL('https://i.pinimg.com/236x/86/8d/ff/868dffec62951fc829be7bfc70c77f46.jpg')
+                    nub1 = nadya.downloadFileURL('https://r3---sn-q4flrnel.googlevideo.com/videoplayback?itag=22&pl=19&mime=video%2Fmp4&gcr=us&c=WEB&mm=31%2C26&mn=sn-q4flrnel%2Csn-vgqsenlz&ratebypass=yes&requiressl=yes&ei=XNFoW4POK5CBkwa-2ZKgAg&ms=au%2Conr&mt=1533595924&mv=m&dur=232.617&expire=1533617596&ip=70.182.95.5&key=yt6&lmt=1518721849427359&id=o-AOe7n1W4qGVt_c4_JnKu6EJWx21hv7S1H2K7aD19SHWh&fvip=3&source=youtube&initcwndbps=1561250&ipbits=0&sparams=dur%2Cei%2Cgcr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&signature=B0EF017628FF99343FA5733ABA7CDD16FBED9BAA.9A486CC1324357B14B44861EB22CE712401A5B38&video_id=BpmJh2CjSIA&title=Bring+Me+The+Horizon+-+True+Friends+%28Official+Lyric+Video%29')
                     changeVideoAndPictureProfile(nub, nub1)
 
 #==============================================================================#
