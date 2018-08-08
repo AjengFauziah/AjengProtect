@@ -202,8 +202,8 @@ def helpmessage():
                   "├≺ GroupId" + "\n" + \
                   "├≺ GroupName" + "\n" + \
                   "├≺ GroupPicture" + "\n" + \
-                  "├≺ GroupTicket" + "\n" + \
-                  "├≺ GroupTicket」" + "\n" + \
+                  "├≺ Qr" + "\n" + \
+                  "├≺ Qr on/off" + "\n" + \
                   "├≺ GroupList" + "\n" + \
                   "├≺ GroupMemberList" + "\n" + \
                   "├≺ GroupInfo" + "\n" + \
