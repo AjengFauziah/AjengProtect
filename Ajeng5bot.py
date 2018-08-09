@@ -207,7 +207,7 @@ def helpmessage():
                   "├≺ GroupList" + "\n" + \
                   "├≺ GroupMemberList" + "\n" + \
                   "├≺ GroupInfo" + "\n" + \
-                  "├≺ Cium" + "\n" + \
+                  "├≺ Sentil" + "\n" + \
                   "├─⊶ Special ⊷─────╼" + "\n" + \
                   "├≺ Mimic「On/Off」" + "\n" + \
                   "├≺ MimicList" + "\n" + \
@@ -237,10 +237,10 @@ def helpmessage():
                   "├≺ BanList" + "\n" + \
                   "├≺ ClearBan" + "\n" + \
                   "├≺ Respon" + "\n" + \
+                  "├≺ Minions" + "\n" + \
+                  "├≺ Minions bye" + "\n" + \
                   "├≺ Mybot" + "\n" + \
-                  "├≺ JoinAll" + "\n" + \
-                  "├≺ ByeAll" + "\n" + \
-                  "├─⊶ Credits By:©Alx ⊷─╼" + "\n" + \
+                  "├─⊶ MINIONS BOTS ⊷─╼" + "\n" + \
                   "╰────────────╼"
     return helpMessage
     
@@ -451,7 +451,7 @@ def lineBot(op):
             if nadyaMID in op.param3:
                 if settings["autoJoin"] == True:
                     nadya.acceptGroupInvitation(op.param1)
-                nadya.sendMention(op.param1, "Halo, Terimakasih Telah Mengundang Saya :3")
+                nadya.sendMessage(op.param1, "Minions in your area!!!\nIf you are not admin, the bot will be dragged by the creator\nhttps://line.me/ti/p/rlsLFZ8fI0")
                 
 #        if op.type == 15:
  #           print ("[ 15 ] NOTIFIED LEAVE INTO GROUP")
@@ -590,7 +590,13 @@ def lineBot(op):
                     timeNow = time.time()
                     runtime = timeNow - botStart
                     runtime = format_timespan(runtime)
-                    nadya.sendMessage(to, "Bot sudah berjalan selama {}".format(str(runtime)))
+                    own = "u2b91589ca9339d39b58400fa6ba8a181"
+                    contact = nadya.getContact(own)
+                    icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
+                    name = contact.displayName
+                    link = "line://ti/p/~alx-404"
+                    text = "Bot sudah berjalan selama {}".format(str(runtime))
+                    nadya.sendFooter(to, text, icon, name, link)
                 elif text.lower() == 'about':
                     try:
                         arr = []
@@ -619,26 +625,26 @@ def lineBot(op):
                 elif text.lower() == 'status':
                     try:
                         ret_ = "╔══[ Status ]"
-                        if settings["protect"] == True: ret_ += "\n╠ Protect ✅"
-                        else: ret_ += "\n╠ Protect ❌"
-                        if settings["qrprotect"] == True: ret_ += "\n╠ Qr Protect ✅"
-                        else: ret_ += "\n╠ Qr Protect ❌"
-                        if settings["inviteprotect"] == True: ret_ += "\n╠ Invite Protect ✅"
-                        else: ret_ += "\n╠ Invite Protect ❌"
-                        if settings["cancelprotect"] == True: ret_ += "\n╠ Cancel Protect ✅"
-                        else: ret_ += "\n╠ Cancel Protect ❌"
-                        if settings["autoAdd"] == True: ret_ += "\n╠ Auto Add ✅"
-                        else: ret_ += "\n╠ Auto Add ❌"
-                        if settings["autoJoin"] == True: ret_ += "\n╠ Auto Join ✅"
-                        else: ret_ += "\n╠ Auto Join ❌"
-                        if settings["autoLeave"] == True: ret_ += "\n╠ Auto Leave ✅"
-                        else: ret_ += "\n╠ Auto Leave ❌"
-                        if settings["autoRead"] == True: ret_ += "\n╠ Auto Read ✅"
-                        else: ret_ += "\n╠ Auto Read ❌"
-                        if settings["checkSticker"] == True: ret_ += "\n╠ Check Sticker ✅"
-                        else: ret_ += "\n╠ Check Sticker ❌"
-                        if settings["detectMention"] == True: ret_ += "\n╠ Detect Mention ✅"
-                        else: ret_ += "\n╠ Detect Mention ❌"
+                        if settings["protect"] == True: ret_ += "\n╠ Protect ◉"
+                        else: ret_ += "\n╠ Protect ◎"
+                        if settings["qrprotect"] == True: ret_ += "\n╠ Qr Protect ◉"
+                        else: ret_ += "\n╠ Qr Protect ◎"
+                        if settings["inviteprotect"] == True: ret_ += "\n╠ Invite Protect ◉"
+                        else: ret_ += "\n╠ Invite Protect ◎"
+                        if settings["cancelprotect"] == True: ret_ += "\n╠ Cancel Protect ◉"
+                        else: ret_ += "\n╠ Cancel Protect ◎"
+                        if settings["autoAdd"] == True: ret_ += "\n╠ Auto Add ◉"
+                        else: ret_ += "\n╠ Auto Add ◎"
+                        if settings["autoJoin"] == True: ret_ += "\n╠ Auto Join ◉"
+                        else: ret_ += "\n╠ Auto Join ◎"
+                        if settings["autoLeave"] == True: ret_ += "\n╠ Auto Leave ◉"
+                        else: ret_ += "\n╠ Auto Leave ◎"
+                        if settings["autoRead"] == True: ret_ += "\n╠ Auto Read ◉"
+                        else: ret_ += "\n╠ Auto Read ◎"
+                        if settings["checkSticker"] == True: ret_ += "\n╠ Check Sticker ◉"
+                        else: ret_ += "\n╠ Check Sticker ◎"
+                        if settings["detectMention"] == True: ret_ += "\n╠ Detect Mention ◉"
+                        else: ret_ += "\n╠ Detect Mention ◎"
                         ret_ += "\n╚══[ Status ]"
                         nadya.sendMessage(to, str(ret_))
                     except Exception as e:
@@ -689,7 +695,7 @@ def lineBot(op):
                             mc = "╔═══════════════\n╠BOT PROTECT ALX\n╠══✪〘 Owner List 〙✪═══\n"
                             for mi_d in admin:
                                 mc += "╠✪ " +nadya.getContact(mi_d).displayName + "\n"
-                            nadya.sendMessage(msg.to,mc + "╠═══════════════\n╠✪〘 line.me/ti/p/~queen.sha 〙\n╚═══════════════")
+                            nadya.sendMessage(msg.to,mc + "╠═══════════════\n╠✪〘 line.me/ti/p/~alx-404 〙\n╚═══════════════")
 #-------------------------------------------------------------------------------
                 elif msg.text.lower().startswith("adminadd "):
                     if msg._from in Owner:
@@ -740,7 +746,7 @@ def lineBot(op):
                             mc = "╔═══════════════\n╠BOT PROTECT ALX\n╠══✪〘 Admin List 〙✪═══\n"
                             for mi_d in admin:
                                 mc += "╠✪ " +nadya.getContact(mi_d).displayName + "\n"
-                            nadya.sendMessage(msg.to,mc + "╠═══════════════\n╠✪〘 line.me/ti/p/~queen.sha 〙\n╚═══════════════")
+                            nadya.sendMessage(msg.to,mc + "╠═══════════════\n╠✪〘 line.me/ti/p/~alx-404 〙\n╚═══════════════")
 #-------------------------------------------------------------------------------
                 elif text.lower() == 'protect on':
                     if msg._from in Owner:
@@ -948,29 +954,30 @@ def lineBot(op):
                         ki3.sendContact(to, ki3MID)
                         ki4.sendContact(to, ki4MID)
                         
-                elif text.lower() in ["byeall"]:
-                  if msg._from in Owner:    
+                elif text.lower() in ["minions bye"]:
+                  if msg._from in Owner:
+                    nadya.leaveGroup(msg.to)
                     ki.leaveGroup(msg.to)
                     ki2.leaveGroup(msg.to)
                     ki3.leaveGroup(msg.to)
                     ki4.leaveGroup(msg.to)
 
-                elif text.lower() in ["@bye"]:
+                elif text.lower() in ["m1bye"]:
                     nadya.leaveGroup(msg.to)
-                elif text.lower() in ["2bye"]:
+                elif text.lower() in ["m2bye"]:
                   if msg._from in Owner:
                     ki.leaveGroup(msg.to)
-                elif text.lower() in ["3bye"]:
+                elif text.lower() in ["m3bye"]:
                   if msg._from in Owner:
                     ki2.leaveGroup(msg.to)
-                elif text.lower() in ["4bye"]:
+                elif text.lower() in ["m4bye"]:
                   if msg._from in Owner:
                     ki3.leaveGroup(msg.to)
-                elif text.lower() in ["5bye"]:
+                elif text.lower() in ["m5bye"]:
                   if msg._from in Owner:
                     ki4.leaveGroup(msg.to)
                
-                elif text.lower() in ["joinall"]:
+                elif text.lower() in ["minions"]:
                   if msg._from in Owner:    
                     G = nadya.getGroup(msg.to)
                     ginfo = nadya.getGroup(msg.to)
@@ -1205,23 +1212,23 @@ def lineBot(op):
                             ki4.updateProfile(profile)
                             ki4.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
 
-                elif msg.text.lower() == "bot1changepictureprofile":
+                elif msg.text.lower() == "b1profile":
                   if msg._from in Owner:
                     settings["bot1changePictureProfile"] = True
                     nadya.sendMessage(to, "Silahkan kirim gambarnya")
-                elif msg.text.lower() == "bot2changepictureprofile":
+                elif msg.text.lower() == "b2profile":
                   if msg._from in Owner:
                     settings["bot2changePictureProfile"] = True
                     ki.sendMessage(to, "Silahkan kirim gambarnya")
-                elif msg.text.lower() == "bot3changepictureprofile":
+                elif msg.text.lower() == "b3profile":
                   if msg._from in Owner:
                     settings["bot3changePictureProfile"] = True
                     ki2.sendMessage(to, "Silahkan kirim gambarnya")
-                elif msg.text.lower() == "bot4changepictureprofile":
+                elif msg.text.lower() == "b4profile":
                   if msg._from in Owner:
                     settings["bot4changePictureProfile"] = True
                     ki3.sendMessage(to, "Silahkan kirim gambarnya")
-                elif msg.text.lower() == "bot5changepictureprofile":
+                elif msg.text.lower() == "b5profile":
                   if msg._from in Owner:
                     settings["bot5changePictureProfile"] = True
                     ki4.sendMessage(to, "Silahkan kirim gambarnya")
@@ -1283,7 +1290,7 @@ def lineBot(op):
                                     num = int(cond[1])
                                     if num <= len(gruplist):
                                        get = gruplist[num -1]
-                                       nadya.sendMessage(get,"[Auto Chat]\nBot di paksa keluar oleh Owner")
+                                       nadya.sendMessage(get,"[AutoRespon]\nBot di paksa keluar oleh Owner")
                                        nadya.sendContact(get,"u2b91589ca9339d39b58400fa6ba8a181")
                                        nadya.leaveGroup(get)
                                        ki.leaveGroup(get)
@@ -1388,32 +1395,32 @@ def lineBot(op):
                 elif text.lower() == 'groupname':
                     gid = nadya.getGroup(to)
                     nadya.sendMessage(to, "[Nama Group : ]\n" + gid.name)
-#                elif text.lower() == 'qr':
- #                   if msg.toType == 2:
-  #                      group = nadya.getGroup(to)
-   #                     if group.preventedJoinByTicket == False:
-    #                        ticket = nadya.reissueGroupTicket(to)
-     #                       nadya.sendMessage(to, "[ Group Ticket ]\nhttps://line.me/R/ti/g/{}".format(str(ticket)))
-#                        else:
- #                           nadya.sendMessage(to, "Grup qr tidak terbuka silahkan buka terlebih dahulu dengan perintah {}openqr".format(str(settings["keyCommand"])))
-#                elif text.lower() == 'qr on':
- #                    if msg.toType == 2:
-  #                      group = nadya.getGroup(to)
-   #                     if group.preventedJoinByTicket == False:
-    #                        nadya.sendMessage(to, "Grup qr sudah terbuka")
-     #                   else:
-      #                      group.preventedJoinByTicket = False
-       #                     nadya.updateGroup(group)
-        #                    nadya.sendMessage(to, "Berhasil membuka grup qr")
-         #       elif text.lower() == 'qr off':
-          #           if msg.toType == 2:
-           #             group = nadya.getGroup(to)
-            #            if group.preventedJoinByTicket == True:
-             #               nadya.sendMessage(to, "Grup qr sudah tertutup")
-              #          else:
-               #             group.preventedJoinByTicket = True
-                #            nadya.updateGroup(group)
-                 #           nadya.sendMessage(to, "Berhasil menutup grup qr")
+                elif text.lower() == 'qr':
+                    if msg.toType == 2:
+                        group = nadya.getGroup(to)
+                        if group.preventedJoinByTicket == False:
+                            ticket = nadya.reissueGroupTicket(to)
+                            nadya.sendMessage(to, "[ Group Ticket ]\nhttps://line.me/R/ti/g/{}".format(str(ticket)))
+                        else:
+                            nadya.sendMessage(to, "Grup qr tidak terbuka silahkan buka terlebih dahulu dengan perintah {}openqr".format(str(settings["keyCommand"])))
+                elif text.lower() == 'qr on':
+                     if msg.toType == 2:
+                        group = nadya.getGroup(to)
+                        if group.preventedJoinByTicket == False:
+                            nadya.sendMessage(to, "Grup qr sudah terbuka")
+                        else:
+                            group.preventedJoinByTicket = False
+                            nadya.updateGroup(group)
+                            nadya.sendMessage(to, "Berhasil membuka grup qr")
+                elif text.lower() == 'qr off':
+                     if msg.toType == 2:
+                        group = nadya.getGroup(to)
+                        if group.preventedJoinByTicket == True:
+                            nadya.sendMessage(to, "Grup qr sudah tertutup")
+                        else:
+                            group.preventedJoinByTicket = True
+                            nadya.updateGroup(group)
+                            nadya.sendMessage(to, "Berhasil menutup grup qr")
                 elif text.lower() == 'groupinfo':
                     group = nadya.getGroup(to)
                     try:
