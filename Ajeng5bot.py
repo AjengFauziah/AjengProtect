@@ -1523,7 +1523,7 @@ def lineBot(op):
                             msgs+="\n══════════List Blacklist═════════\n\nTotal Blacklist :  %i" % len(settings["blacklist"])
                             nadya.sendMessage(msg.to, msgs)
 #=======================================================================================
-                elif msg.text.lower().startswith("cium "):
+                elif msg.text.lower().startswith("sentil "):
                     if msg._from in Owner:
                        targets = []
                        key = eval(msg.contentMetadata["MENTION"])
