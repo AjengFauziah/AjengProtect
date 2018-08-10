@@ -572,6 +572,7 @@ def lineBot(op):
 #==============================================================================#
                 elif text.lower() == 'speed':
                     start = time.time()
+                    nadya.sendMessage(to, "calculate...")
                     elapsed_time = time.time() - start
                     own = "u2b91589ca9339d39b58400fa6ba8a181"
                     contact = nadya.getContact(own)
@@ -624,28 +625,28 @@ def lineBot(op):
 #==============================================================================#
                 elif text.lower() == 'status':
                     try:
-                        ret_ = "╔══[ Status ]"
-                        if settings["protect"] == True: ret_ += "\n╠ Protect ◉"
-                        else: ret_ += "\n╠ Protect ◎"
-                        if settings["qrprotect"] == True: ret_ += "\n╠ Qr Protect ◉"
-                        else: ret_ += "\n╠ Qr Protect ◎"
-                        if settings["inviteprotect"] == True: ret_ += "\n╠ Invite Protect ◉"
-                        else: ret_ += "\n╠ Invite Protect ◎"
-                        if settings["cancelprotect"] == True: ret_ += "\n╠ Cancel Protect ◉"
-                        else: ret_ += "\n╠ Cancel Protect ◎"
-                        if settings["autoAdd"] == True: ret_ += "\n╠ Auto Add ◉"
-                        else: ret_ += "\n╠ Auto Add ◎"
-                        if settings["autoJoin"] == True: ret_ += "\n╠ Auto Join ◉"
-                        else: ret_ += "\n╠ Auto Join ◎"
-                        if settings["autoLeave"] == True: ret_ += "\n╠ Auto Leave ◉"
-                        else: ret_ += "\n╠ Auto Leave ◎"
-                        if settings["autoRead"] == True: ret_ += "\n╠ Auto Read ◉"
-                        else: ret_ += "\n╠ Auto Read ◎"
-                        if settings["checkSticker"] == True: ret_ += "\n╠ Check Sticker ◉"
-                        else: ret_ += "\n╠ Check Sticker ◎"
-                        if settings["detectMention"] == True: ret_ += "\n╠ Detect Mention ◉"
-                        else: ret_ += "\n╠ Detect Mention ◎"
-                        ret_ += "\n╚══[ Status ]"
+                        ret_ = "╭──⊶ Status ⊷╼"
+                        if settings["protect"] == True: ret_ += "\n├≺ Protect ◉"
+                        else: ret_ += "\n├≺ Protect ◎"
+                        if settings["qrprotect"] == True: ret_ += "\n├≺ Qr Protect ◉"
+                        else: ret_ += "\n├≺ Qr Protect ◎"
+                        if settings["inviteprotect"] == True: ret_ += "\n├≺ Invite Protect ◉"
+                        else: ret_ += "\n├≺ Invite Protect ◎"
+                        if settings["cancelprotect"] == True: ret_ += "\n├≺ Cancel Protect ◉"
+                        else: ret_ += "\n├≺ Cancel Protect ◎"
+                        if settings["autoAdd"] == True: ret_ += "\n├≺ Auto Add ◉"
+                        else: ret_ += "\n├≺ Auto Add ◎"
+                        if settings["autoJoin"] == True: ret_ += "\n├≺ Auto Join ◉"
+                        else: ret_ += "\n├≺ Auto Join ◎"
+                        if settings["autoLeave"] == True: ret_ += "\n├≺ Auto Leave ◉"
+                        else: ret_ += "\n├≺ Auto Leave ◎"
+                        if settings["autoRead"] == True: ret_ += "\n├≺ Auto Read ◉"
+                        else: ret_ += "\n├≺ Auto Read ◎"
+                        if settings["checkSticker"] == True: ret_ += "\n├≺ Check Sticker ◉"
+                        else: ret_ += "\n├≺ Check Sticker ◎"
+                        if settings["detectMention"] == True: ret_ += "\n├≺ Detect Mention ◉"
+                        else: ret_ += "\n├≺ Detect Mention ◎"
+                        ret_ += "\n╰──⊶ Status ⊷╼"
                         nadya.sendMessage(to, str(ret_))
                     except Exception as e:
                         nadya.sendMessage(msg.to, str(e))
