@@ -2241,6 +2241,19 @@ def lineBot(op):
                                 nadya.sendMessage(to, str(ret_))
                         except:
                             nadya.sendMessage(to, "Lirik tidak ditemukan")
+
+            elif msg.contentType == 1:
+                if settings["changePictureProfile"] == True:
+                    path = nadya.downloadObjectMsg(msg_id)
+                    settings["changePictureProfile"] = False
+                    nadya.updateProfilePicture(path)
+                    nadya.sendMessage(to, "Berhasil mengubah foto profile")
+                if settings["changeVideoProfilePicture"] == True:
+                    image = nadya.downloadObjectMsg(msg_id, saveAs="image.jpg")
+                    settings["changeVideoProfilePicture"] = False
+                    changeVideoAndPictureProfile('image.jpg','video.mp4')
+                    nadya.sendMessage(to, " [ ERROR ] TalkException(code=11, reason='Incompatible app version', parameterMap=None)")
+
             elif msg.contentType == 7:
                 if settings["checkSticker"] == True:
                     stk_id = msg.contentMetadata['STKID']

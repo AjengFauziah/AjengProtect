@@ -921,18 +921,28 @@ def lineBot(op):
                 elif text.lower() == 'checksticker off':
                     settings["checkSticker"] = False
                     nadya.sendMessage(to, "Berhasil menonaktifkan Check Details Sticker")
-                elif text.lower() == 'detectmention on':
-                    settings["datectMention"] = True
-                    nadya.sendMessage(to, "Berhasil mengaktifkan Detect Mention")
-                elif text.lower() == 'detectmention off':
-                    settings["datectMention"] = False
-                    nadya.sendMessage(to, "Berhasil menonaktifkan Detect Mention")
-                elif text.lower() == 'autojoinlink on':
-                    settings["autoJoinTicket"] = True
-                    nadya.sendMessage(to, "Berhasil mengaktifkan Auto Join Link")
-                elif text.lower() == 'autojoinlink off':
-                    settings["autoJoinTicket"] = False
-                    nadya.sendMessage(to, "Berhasil menonaktifkan Auto Join Link")                    
+                elif msg.text.lower() == "auto jointicket on":
+                  if msg._from in Owner:
+                    Settings["AutojoinTicket"] = True
+                    nadya.sendMessage(kirim,"Join Ticket Set To On")
+                elif msg.text.lower() == "auto jointicket off":
+                  if msg._from in Owner:
+                    Settings["AutojoinTicket"] = False
+                    nadya.sendMessage(kirim,"Join Ticket Set To Off")
+                elif '/ti/g/' in msg.text.lower():
+                  if msg._from in Owner:
+                    link_re = re.compile('(?:line\:\/|line\.me\/R)\/ti\/g\/([a-zA-Z0-9_-]+)?')
+                    links = link_re.findall(msg.text)
+                    n_links=[]
+                    for l in links:
+                        if l not in n_links:
+                            n_links.append(l)
+                    for ticket_id in n_links:
+                        if Settings["AutojoinTicket"] == True:
+                            group=nadya.findGroupByTicket(ticket_id)
+                            nadya.acceptGroupInvitationByTicket(group.id,ticket_id)
+                            nadya.sendMessage(kirim,"Success Masuk %s" % str(group.name))
+
 #==============================================================================#
                 elif text.lower() == "respon":
                     nadya.sendMessage(msg.to,responsename)
