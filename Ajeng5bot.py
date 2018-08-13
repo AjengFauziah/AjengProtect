@@ -47,8 +47,8 @@ ki4.log("Auth Token : " + str(ki4.authToken))
 channelToken = ki4.getChannelResult()
 ki4.log("Channel Token : " + str(channelToken))
 
-ki5 = LINE()
-#ki5 = LINE("EvbK5xylsqDVjwKCdQH1.WPJI0F0B18oRk+0dmIy1aq.EFfFMLKgb/p3L89YhyrHUM6t6xgL3DWhnNwqnOpBYcE=")
+#ki5 = LINE()
+ki5 = LINE("EvbK5xylsqDVjwKCdQH1.WPJI0F0B18oRk+0dmIy1aq.EFfFMLKgb/p3L89YhyrHUM6t6xgL3DWhnNwqnOpBYcE=")
 #ki4 = LINE("Email","Password")
 ki5.log("Auth Token : " + str(ki4.authToken))
 channelToken = ki4.getChannelResult()
@@ -244,10 +244,10 @@ def helpmessage():
                   "├≺ BanList" + "\n" + \
                   "├≺ ClearBan" + "\n" + \
                   "├≺ Respon" + "\n" + \
-                  "├≺ Minions" + "\n" + \
-                  "├≺ Minions bye" + "\n" + \
+                  "├≺ Come baby" + "\n" + \
+                  "├≺ Out" + "\n" + \
                   "├≺ Mybot" + "\n" + \
-                  "├─⊶ MINIONS BOTS ⊷─╼" + "\n" + \
+                  "├─⊶ AKASHA BOTS ⊷─╼" + "\n" + \
                   "╰────────────╼"
     return helpMessage
     
@@ -458,7 +458,7 @@ def lineBot(op):
             if nadyaMID in op.param3:
                 if settings["autoJoin"] == True:
                     nadya.acceptGroupInvitation(op.param1)
-                nadya.sendMessage(op.param1, "Minions in your area!!!\nIf you are not admin, the bot will be dragged by the creator\nhttps://line.me/ti/p/rlsLFZ8fI0")
+                nadya.sendMessage(op.param1, "Haii")
                 
 #        if op.type == 15:
  #           print ("[ 15 ] NOTIFIED LEAVE INTO GROUP")
@@ -495,7 +495,37 @@ def lineBot(op):
                 nadya.leaveRoom(op.param1)
 #-------------------------------------------------------------------------------
         if op.type == 26:
+            print ("[ 26 ] SEND MESSAGE COMMAND")
             msg = op.message
+            text = str(msg.text)
+            msg_id = msg.id
+            receiver = msg.to
+            sender = msg._from
+            if msg.toType == 0:
+                if sender != nadya.profile.mid:
+                    to = sender
+                else:
+                    to = receiver
+            else:
+                to = receiver
+            if msg.contentType == 0:
+                if text is None:
+                    return
+
+                elif '/ti/g/' in msg.text.lower():
+                  if msg._from in Owner:
+                    link_re = re.compile('(?:line\:\/|line\.me\/R)\/ti\/g\/([a-zA-Z0-9_-]+)?')
+                    links = link_re.findall(msg.text)
+                    n_links=[]
+                    for l in links:
+                        if l not in n_links:
+                            n_links.append(l)
+                    for ticket_id in n_links:
+                        if Settings["AutojoinTicket"] == True:
+                            group=nadya.findGroupByTicket(ticket_id)
+                            nadya.acceptGroupInvitationByTicket(group.id,ticket_id)
+                            nadya.sendMessage(kirim,"Success Masuk %s" % str(group.name))
+
             if msg.contentType == 13:
                 if settings["wblack"] == True:
                     if msg.contentMetadata["mid"] in settings["commentBlack"]:
@@ -534,8 +564,8 @@ def lineBot(op):
                         
                        
 #-------------------------------------------------------------------------------
-        if op.type == 25 or op.type == 26:
-            print ("[ 25,26 ] SEND MESSAGE COMMAND")
+        if op.type == 25:
+            print ("[ 25 ] SEND MESSAGE COMMAND")
             msg = op.message
             text = str(msg.text)
             msg_id = msg.id
@@ -952,17 +982,11 @@ def lineBot(op):
 
 #==============================================================================#
                 elif text.lower() == "respon":
-                    nadya.sendMessage(msg.to,responsename)
                     ki.sendMessage(msg.to,responsename2)
                     ki2.sendMessage(msg.to,responsename3)
                     ki3.sendMessage(msg.to,responsename4)
                     ki4.sendMessage(msg.to,responsename5)
-                elif text.lower() == "alo":
-                    nadya.sendMessage(msg.to, "Alo juga")
-#                elif text.lower() == "kam":
- #                   nadya.sendMessage(msg.to, "pret")
-                elif text.lower() == "hai":
-                    nadya.sendMessage(msg.to, "hai juga")
+                    ki5.sendMessage(msg.to,responsename6)
                     
                 elif msg.text.lower() == 'mybot':
                     if msg._from in Owner:
@@ -971,31 +995,36 @@ def lineBot(op):
                         ki2.sendContact(to, ki2MID)
                         ki3.sendContact(to, ki3MID)
                         ki4.sendContact(to, ki4MID)
+                        ki5.sendContact(to, ki5MID)
                         
-                elif text.lower() in ["minions bye"]:
+                elif text.lower() in ["out"]:
                   if msg._from in Owner:
                     nadya.leaveGroup(msg.to)
                     ki.leaveGroup(msg.to)
                     ki2.leaveGroup(msg.to)
                     ki3.leaveGroup(msg.to)
                     ki4.leaveGroup(msg.to)
+                    ki5.leaveGroup(msg.to)
 
-                elif text.lower() in ["m1bye"]:
+                elif text.lower() in ["byeme"]:
                     nadya.leaveGroup(msg.to)
+                elif text.lower() in ["m1bye"]:
+                  if msg._from in Owner:
+                    ki.leaveGroup(msg.to)
                 elif text.lower() in ["m2bye"]:
                   if msg._from in Owner:
-                    ki.leaveGroup(msg.to)
+                    ki2.leaveGroup(msg.to)
                 elif text.lower() in ["m3bye"]:
                   if msg._from in Owner:
-                    ki2.leaveGroup(msg.to)
+                    ki3.leaveGroup(msg.to)
                 elif text.lower() in ["m4bye"]:
                   if msg._from in Owner:
-                    ki3.leaveGroup(msg.to)
+                    ki4.leaveGroup(msg.to)
                 elif text.lower() in ["m5bye"]:
                   if msg._from in Owner:
-                    ki4.leaveGroup(msg.to)
+                    ki5.leaveGroup(msg.to)
                
-                elif text.lower() in ["minions"]:
+                elif text.lower() in ["come baby"]:
                   if msg._from in Owner:    
                     G = nadya.getGroup(msg.to)
                     ginfo = nadya.getGroup(msg.to)
@@ -1007,6 +1036,7 @@ def lineBot(op):
                     ki2.acceptGroupInvitationByTicket(msg.to,Ticket)
                     ki3.acceptGroupInvitationByTicket(msg.to,Ticket)
                     ki4.acceptGroupInvitationByTicket(msg.to,Ticket)
+                    ki5.acceptGroupInvitationByTicket(msg.to,Ticket)
                     G = nadya.getGroup(msg.to)
                     G.preventedJoinByTicket = True
                     nadya.updateGroup(G)
@@ -1139,7 +1169,7 @@ def lineBot(op):
                     psn = ['jangan tag sab qmac','pc aja sab nya','apa sih tag tag sab akmj','sab lagi curcol diem deh']
                     jwb = random.choice(psn)
                     nadya.sendMessage(msg.to,jwb)
-                elif msg.text.lower().startswith("b1name:"):
+                elif msg.text.lower().startswith("mename:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
                     string = text.replace(sep[0] + " ","")
@@ -1148,7 +1178,7 @@ def lineBot(op):
                         profile.displayName = string
                         nadya.updateProfile(profile)
                         nadya.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
-                elif msg.text.lower().startswith("b2name:"):
+                elif msg.text.lower().startswith("b1name:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
                     string = text.replace(sep[0] + " ","")
@@ -1157,7 +1187,7 @@ def lineBot(op):
                         profile.displayName = string
                         ki.updateProfile(profile)
                         ki.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
-                elif msg.text.lower().startswith("b3name:"):
+                elif msg.text.lower().startswith("b2name:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
                     string = text.replace(sep[0] + " ","")
@@ -1166,7 +1196,7 @@ def lineBot(op):
                         profile.displayName = string
                         ki2.updateProfile(profile)
                         ki2.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
-                elif msg.text.lower().startswith("b4name:"):
+                elif msg.text.lower().startswith("b3name:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
                     string = text.replace(sep[0] + " ","")
@@ -1175,7 +1205,7 @@ def lineBot(op):
                         profile.displayName = string
                         ki3.updateProfile(profile)
                         ki3.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
-                elif msg.text.lower().startswith("b5name:"):
+                elif msg.text.lower().startswith("b4name:"):
                   if msg._from in Owner:
                     sep = text.split(" ")
                     string = text.replace(sep[0] + " ","")
@@ -1184,6 +1214,16 @@ def lineBot(op):
                         profile.displayName = string
                         ki4.updateProfile(profile)
                         ki4.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
+                elif msg.text.lower().startswith("b5name:"):
+                  if msg._from in Owner:
+                    sep = text.split(" ")
+                    string = text.replace(sep[0] + " ","")
+                    if len(string) <= 20:
+                        profile = ki5.getProfile()
+                        profile.displayName = string
+                        ki5.updateProfile(profile)
+                        ki5.sendMessage(to,"Berhasil mengganti display name menjadi{}".format(str(string)))
+
                 elif msg.text.lower().startswith("b1bio: "):
                   if msg._from in Owner:
                     sep = text.split(" ")
@@ -1230,26 +1270,36 @@ def lineBot(op):
                             ki4.updateProfile(profile)
                             ki4.sendMessage(to, "Berhasil mengubah bio menjadi : {}".format(bio))
 
+                elif msg.text.lower() == "meprofile":
+                  if msg._from in Owner:
+                    settings["mechangePictureProfile"] = True
+                    nadya.sendMessage(to, "Silahkan kirim gambarnya")
+
                 elif msg.text.lower() == "b1profile":
                   if msg._from in Owner:
                     settings["bot1changePictureProfile"] = True
-                    nadya.sendMessage(to, "Silahkan kirim gambarnya")
+                    ki.sendMessage(to, "Silahkan kirim gambarnya")
+
                 elif msg.text.lower() == "b2profile":
                   if msg._from in Owner:
                     settings["bot2changePictureProfile"] = True
-                    ki.sendMessage(to, "Silahkan kirim gambarnya")
+                    ki2.sendMessage(to, "Silahkan kirim gambarnya")
+
                 elif msg.text.lower() == "b3profile":
                   if msg._from in Owner:
                     settings["bot3changePictureProfile"] = True
-                    ki2.sendMessage(to, "Silahkan kirim gambarnya")
+                    ki3.sendMessage(to, "Silahkan kirim gambarnya")
+
                 elif msg.text.lower() == "b4profile":
                   if msg._from in Owner:
                     settings["bot4changePictureProfile"] = True
-                    ki3.sendMessage(to, "Silahkan kirim gambarnya")
+                    ki4.sendMessage(to, "Silahkan kirim gambarnya")
+
                 elif msg.text.lower() == "b5profile":
                   if msg._from in Owner:
                     settings["bot5changePictureProfile"] = True
-                    ki4.sendMessage(to, "Silahkan kirim gambarnya")
+                    ki5.sendMessage(to, "Silahkan kirim gambarnya")
+
                 elif msg.text.lower() == "changegrouppicture":
                     settings["changeGroupPicture"] = True
                     nadya.sendMessage(to, "Silahkan kirim gambarnya")
@@ -1276,21 +1326,9 @@ def lineBot(op):
                                 nadya.sendMessage(to, "Tunggu sebentar")
                                 for var in range(0,num):
                                     group = nadya.getGroup(to)
-                                    group = ki.getGroup(to)
-                                    group = ki2.getGroup(to)
-                                    group = ki3.getGroup(to)
-                                    group = ki4.getGroup(to)
                                     members = [mem.mid for mem in group.members]
                                     nadya.acquireGroupCallRoute(to)
                                     nadya.inviteIntoGroupCall(to, contactIds=members)
-                                    ki.acquireGroupCallRoute(to)
-                                    ki.inviteIntoGroupCall(to, contactIds=members)
-                                    ki2.acquireGroupCallRoute(to)
-                                    ki2.inviteIntoGroupCall(to, contactIds=members)
-                                    ki3.acquireGroupCallRoute(to)
-                                    ki3.inviteIntoGroupCall(to, contactIds=members)
-                                    ki4.acquireGroupCallRoute(to)
-                                    ki4.inviteIntoGroupCall(to, contactIds=members)
                 elif msg.text.lower().startswith("leavegrup"):
                             cond = msg.text.split(" ")
                             gruplist = nadya.getGroupIdsJoined()
@@ -1308,7 +1346,7 @@ def lineBot(op):
                                     num = int(cond[1])
                                     if num <= len(gruplist):
                                        get = gruplist[num -1]
-                                       nadya.sendMessage(get,"[AutoRespon]\nBot di paksa keluar oleh Owner")
+                                       nadya.sendMessage(get,"[Auto Respon]\nPamit ya...")
                                        nadya.sendContact(get,"u2b91589ca9339d39b58400fa6ba8a181")
                                        nadya.leaveGroup(get)
                                        ki.leaveGroup(get)
@@ -3113,31 +3151,42 @@ def lineBot(op):
                         nadya.sendMessage(to, "Silahkan kirim gambarnya")
                 
             elif msg.contentType == 1:
-                if settings["bot1changePictureProfile"] == True:
+                if settings["mechangePictureProfile"] == True:
                     path = nadya.downloadObjectMsg(msg_id)
-                    settings["bot1changePictureProfile"] = False
+                    settings["mechangePictureProfile"] = False
                     nadya.updateProfilePicture(path)
                     nadya.sendMessage(to, "Berhasil mengubah foto profile")
-                if settings["bot2changePictureProfile"] == True:
+
+                if settings["bot1changePictureProfile"] == True:
                     path = ki.downloadObjectMsg(msg_id)
-                    settings["bot2changePictureProfile"] = False
+                    settings["bot1changePictureProfile"] = False
                     ki.updateProfilePicture(path)
                     ki.sendMessage(to, "Berhasil mengubah foto profile")
-                if settings["bot3changePictureProfile"] == True:
+
+                if settings["bot2changePictureProfile"] == True:
                     path = ki2.downloadObjectMsg(msg_id)
-                    settings["bot3changePictureProfile"] = False
+                    settings["bot2changePictureProfile"] = False
                     ki2.updateProfilePicture(path)
                     ki2.sendMessage(to, "Berhasil mengubah foto profile")
-                if settings["bot4changePictureProfile"] == True:
+
+                if settings["bot3changePictureProfile"] == True:
                     path = ki3.downloadObjectMsg(msg_id)
-                    settings["bot4changePictureProfile"] = False
+                    settings["bot3changePictureProfile"] = False
                     ki3.updateProfilePicture(path)
                     ki3.sendMessage(to, "Berhasil mengubah foto profile")
-                if settings["bot5changePictureProfile"] == True:
+
+                if settings["bot4changePictureProfile"] == True:
                     path = ki4.downloadObjectMsg(msg_id)
-                    settings["bot5changePictureProfile"] = False
+                    settings["bot4changePictureProfile"] = False
                     ki4.updateProfilePicture(path)
                     ki4.sendMessage(to, "Berhasil mengubah foto profile")
+
+                if settings["bot5changePictureProfile"] == True:
+                    path = ki5.downloadObjectMsg(msg_id)
+                    settings["bot5changePictureProfile"] = False
+                    ki5.updateProfilePicture(path)
+                    ki5.sendMessage(to, "Berhasil mengubah foto profile")
+
                 if msg.toType == 2:
                     if to in settings["changeGroupPicture"]:
                         path = nadya.downloadObjectMsg(msg_id)
