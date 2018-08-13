@@ -12,8 +12,8 @@ from googletrans import Translator
 botStart = time.time()
 
 #nadya = LINE()
-nadya = LINE("Evhim3KqE5E0blQ26bBf.lCdyoqZN5msDc/pv3aSJFW.adiSUUF+3NN5jMIp3NsLn1vZ+e93YCSaDfCVCxF8syc=")
-#nadya = LINE("EuFCtzYVtrV3Csp8B6X0.ocHod1lJjuXSUThjwpxQqa.mpdZe4Y/eCM2I8HSo/8jPWKX/1zMNKg0jLve0pEz0io=")
+#nadya = LINE("Evhim3KqE5E0blQ26bBf.lCdyoqZN5msDc/pv3aSJFW.adiSUUF+3NN5jMIp3NsLn1vZ+e93YCSaDfCVCxF8syc=")
+nadya = LINE("EvBPjb8UKFyHiiBOD1Y1.k5fyNkKZNtM1Had6A6IHGq.1KaYSu+ipIg5l4CTgXbcU3OmyOFW3CHUWzDIcWS/20g=")
 #nadya = LINE("Email","Password")
 nadya.log("Auth Token : " + str(nadya.authToken))
 channelToken = nadya.getChannelResult()
@@ -21,7 +21,6 @@ nadya.log("Channel Token : " + str(channelToken))
 
 #ki = LINE()
 ki = LINE("EvjQwISFLZnO5cYezvm4.1yUbA0p1JC/nDll5qE28ba.GvSUL5Te2gI+rMt+ke6zu07BKM5uxjMDSVQJ9Z9MG6A=")
-#ki = LINE("EuwTX8t48ihi5aMWYkb5.XbhUGpVqXPFdlc8smhKx5q.wpFvwVvne56J4vN8gM9rxlzGgEyH1r0WAeqB8Nlz5GA=")
 #ki = LINE("Email","Password")
 ki.log("Auth Token : " + str(ki.authToken))
 channelToken = ki.getChannelResult()
@@ -29,7 +28,6 @@ ki.log("Channel Token : " + str(channelToken))
 
 #ki2 = LINE()
 ki2 = LINE("Evj8mQfNn6yvq4Xpxcjc.J7uCv+x1CmZzyxmusZ7p+a.gNGuCYo79bTcFGT1I3PonspWeD4VL3NmPH5ZF3JEBkU=")
-#ki2 = LINE("EuG96GA7ciU9ECQljHsc.s2kq8Aax4k7yc5nFByAYVa.OWtpxnDX6J0GAS7VLZNtnFThJGBCpwzGOwmnNAcfRqk=")
 #ki2 = LINE("Email","Password")
 ki2.log("Auth Token : " + str(ki2.authToken))
 channelToken = ki2.getChannelResult()
@@ -37,7 +35,6 @@ ki2.log("Channel Token : " + str(channelToken))
 
 #ki3 = LINE()
 ki3 = LINE("EvdIUOo7e81WVlxwsv98.iq+5EtfHFiPMeuaKDYFp2a.BiRplvl9Da7DNuQXhAx0E4STFY0lsHFK2TAMHaAlUig=")
-#ki3 = LINE("EuUz97vWLRKW3HaPyvX9.cdJcoh2Ng2LUJ+g++C7i6q.Xu4E4xDJkMBHEgnVab0U1kpx5VcYarkc8No38xU08d8=")
 #ki3 = LINE("Email","Password")
 ki3.log("Auth Token : " + str(ki3.authToken))
 channelToken = ki3.getChannelResult()
@@ -45,12 +42,17 @@ ki3.log("Channel Token : " + str(channelToken))
 
 #ki4 = LINE()
 ki4 = LINE("EvbK5xylsqDVjwKCdQH1.WPJI0F0B18oRk+0dmIy1aq.EFfFMLKgb/p3L89YhyrHUM6t6xgL3DWhnNwqnOpBYcE=")
-#ki4 = LINE("Euvy2kEegkvrMbQflWx6.Xdw13d7L4vYHIcbTQFIh1G.bnMh2t7h7D7f1uVvgUH96ABoHTWgJ2QcrzYarRe4tnc=")
 #ki4 = LINE("Email","Password")
 ki4.log("Auth Token : " + str(ki4.authToken))
 channelToken = ki4.getChannelResult()
 ki4.log("Channel Token : " + str(channelToken))
 
+ki5 = LINE()
+#ki5 = LINE("EvbK5xylsqDVjwKCdQH1.WPJI0F0B18oRk+0dmIy1aq.EFfFMLKgb/p3L89YhyrHUM6t6xgL3DWhnNwqnOpBYcE=")
+#ki4 = LINE("Email","Password")
+ki5.log("Auth Token : " + str(ki4.authToken))
+channelToken = ki4.getChannelResult()
+ki5.log("Channel Token : " + str(channelToken))
 
 
 KAC = [nadya,ki,ki2,ki3,ki4]
@@ -60,8 +62,9 @@ kiMID = ki.profile.mid
 ki2MID = ki2.profile.mid
 ki3MID = ki3.profile.mid
 ki4MID = ki4.profile.mid
+ki5MID = ki5.profile.mid
 
-Bots = [nadyaMID,kiMID,ki2MID,ki3MID,ki4MID]
+Bots = [nadyaMID,kiMID,ki2MID,ki3MID,ki4MID,ki5MID]
 creator = ["u14f64e139a3817afaabe27d237afb36b","u92e4326146a0bf296ca15846aa2a25f6"]
 Owner = ["u14f64e139a3817afaabe27d237afb36b"]
 admin = ["u14f64e139a3817afaabe27d237afb36b"]
@@ -71,24 +74,28 @@ kiProfile = ki.getProfile()
 ki2Profile = ki2.getProfile()
 ki3Profile = ki3.getProfile()
 ki4Profile = ki4.getProfile()
+ki5Profile = ki5.getProfile()
 
 lineSettings = nadya.getSettings()
 kiSettings = ki.getSettings()
 ki2Settings = ki2.getSettings()
 ki3Settings = ki3.getSettings()
 ki4Settings = ki4.getSettings()
+ki5Settings = ki5.getSettings()
 
 oepoll = OEPoll(nadya)
 oepoll1 = OEPoll(ki)
 oepoll2 = OEPoll(ki2)
 oepoll3 = OEPoll(ki3)
 oepoll4 = OEPoll(ki4)
+oepoll5 = OEPoll(ki5)
 
 responsename = nadya.getProfile().displayName
 responsename2 = ki.getProfile().displayName
 responsename3 = ki2.getProfile().displayName
 responsename4 = ki3.getProfile().displayName
 responsename5 = ki4.getProfile().displayName
+responsename6 = ki5.getProfile().displayName
 #==============================================================================#
 
 with open('creator.json', 'r') as fp:
