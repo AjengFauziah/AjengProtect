@@ -48,10 +48,10 @@ channelToken = ki4.getChannelResult()
 ki4.log("Channel Token : " + str(channelToken))
 
 #ki5 = LINE()
-ki5 = LINE("EvbK5xylsqDVjwKCdQH1.WPJI0F0B18oRk+0dmIy1aq.EFfFMLKgb/p3L89YhyrHUM6t6xgL3DWhnNwqnOpBYcE=")
+ki5 = LINE("EvnXZmTIdnHyiHAmy4Rf.lCdyoqZN5msDc/pv3aSJFW.zqitraWReSFx1UqiwzQbUtwFkBbAsCtidTPzUrplRyg=")
 #ki4 = LINE("Email","Password")
-ki5.log("Auth Token : " + str(ki4.authToken))
-channelToken = ki4.getChannelResult()
+ki5.log("Auth Token : " + str(ki5.authToken))
+channelToken = ki5.getChannelResult()
 ki5.log("Channel Token : " + str(channelToken))
 
 
@@ -990,7 +990,6 @@ def lineBot(op):
                     
                 elif msg.text.lower() == 'mybot':
                     if msg._from in Owner:
-                        nadya.sendContact(to, nadyaMID)
                         ki.sendContact(to, kiMID)
                         ki2.sendContact(to, ki2MID)
                         ki3.sendContact(to, ki3MID)
@@ -999,7 +998,6 @@ def lineBot(op):
                         
                 elif text.lower() in ["out"]:
                   if msg._from in Owner:
-                    nadya.leaveGroup(msg.to)
                     ki.leaveGroup(msg.to)
                     ki2.leaveGroup(msg.to)
                     ki3.leaveGroup(msg.to)
